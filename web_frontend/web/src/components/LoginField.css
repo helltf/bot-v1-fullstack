@@ -1,0 +1,33 @@
+
+.login_box{
+    width: 420px;
+    height: 250px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.login_text{
+    text-align:center;
+}
+#input_field{
+    font-size: 2rem;
+}
+.btn_login{
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    
+}
+.btn_login :hover{
+    color: black;
+}
