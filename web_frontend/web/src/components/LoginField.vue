@@ -2,10 +2,9 @@
   <div class="login_box">
       <h1 class="login_text">LOGIN</h1>
       <div class = input_username_password>
-         <InputField classname="input_username" type="text" placeholder="username..." maxlenght="30" />
-        <InputField classname="input_password" type="password"   placeholder="password..." maxlenght="30" />
+        <InputField :value="password"/>
       </div>
-     <button class="btn_login" type="button">Log in</button>
+     <button v-on:click= "onClick(password)" class="btn_login" type="button" >Log in</button>
   </div>
 </template>
 
@@ -16,6 +15,11 @@ export default {
   name: 'LoginField',
   components:{
     InputField
+  },
+  methods:{
+    onClick (password) {
+      console.log(password)
+    }
   }
 }
 </script>
