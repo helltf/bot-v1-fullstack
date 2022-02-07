@@ -1,20 +1,47 @@
 
-.login_text{
-    text-align:center;
+.form-wrapper{
+    align-content: flex-end;
+    display: block;  
+    position: absolute;
 }
-.input_field{
-    font-size: 2rem;
-}
-.btn_login{
+
+.submit-btn{
+    color: #fff;
+    background-color: chocolate;
+    padding: 7px;
     border: none;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    
+    border-radius: 4px;
+    font-size: 20px;
 }
-.btn_login :hover{
-    color: black;
+
+.login-box{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    display: table-cell; 
+    vertical-align: middle; 
+}
+
+html, body {
+    height:100%;
+}
+
+.login-form>input{
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.login-form{
+    display: grid;
+    margin: auto;
+    margin-bottom: 10px;
 }

@@ -1,25 +1,7 @@
 .login_component{
     position: fixed;
-    top: 50%;
+    top: 20%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-
-.login-form{
-    align-items: center;
-    justify-content: baseline;
-    
-}
-
-.submit-btn{
-    color: #fff;
-    background-color: #333;
-}
-
-.login-box{
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    display: table-cell; vertical-align: middle; 
 }

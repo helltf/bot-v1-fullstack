@@ -1,11 +1,13 @@
 <template>
   <div class="login-box">
       <h1 >LOGIN</h1>
+      <div class="form-wrapper">
       <form class="login-form" @keyup.enter="submit(username, password)" >
-        <input type="text" required v-model="username" placeholder="Enter email">
+        <input  type="text" required v-model="username" placeholder="Enter email">
         <input type="password" required v-model="password" placeholder="Password" >
       </form>
       <button class="submit-btn" @click="submit(username, password)">Submit</button>
+      </div>
   </div>
 </template>
 
@@ -32,7 +34,6 @@ export default {
 }
 
 async function postData(username, password) {
-  console.log(username,password)
   return await (
     await fetch(
       `${process.env.VUE_APP_BASE_PATH}/login`,
