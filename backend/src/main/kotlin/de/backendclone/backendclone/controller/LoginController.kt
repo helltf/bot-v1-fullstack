@@ -9,7 +9,7 @@ class LoginController: LoginInterface{
      override fun postLogin(body: JsonNode): ResponseEntity<Map<String, Boolean>> {
          val username = body.get("username").asText()
          val password = body.get("password").asText()
-         
+
          val isValidLogin = username == "helltf" && password == "11"
          return ResponseEntity.ok(mapOf("success" to isValidLogin))
     }
