@@ -1,14 +1,11 @@
 <template>
-  <div class="login_box">
-      <h1 class="login_text">LOGIN</h1>
-      <form >
-        <label >Username</label>
-        <input type="text" required v-model="username">
-
-         <label >Password</label>
-        <input type="password" required v-model="password">
+  <div class="login-box">
+      <h1 >LOGIN</h1>
+      <form class="login-form" @keyup.enter="submit(username, password)" >
+        <input type="text" required v-model="username" placeholder="Enter email">
+        <input type="password" required v-model="password" placeholder="Password" >
       </form>
-      <button @click="onButtonClick(username, password)"></button>
+      <button class="submit-btn" @click="submit(username, password)">Submit</button>
   </div>
 </template>
 
@@ -25,7 +22,7 @@ export default {
     }
   },
   methods:{
-    onButtonClick: async(username, password) =>{
+    submit: async(username, password) =>{
       let {success} = await postData(username,password)
       if(success){
         router.push("Home")
