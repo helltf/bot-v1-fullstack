@@ -1,33 +1,56 @@
 <template>
   <div class="login_box">
       <h1 class="login_text">LOGIN</h1>
-      <div class = input_username_password>
-        <InputField :value="data().password"/>
+      <form >
+        <label >Username</label>
+        <input type="text" required v-model="username">
 
-      </div>
-     <button v-on:click= "onClick(data().password)" class="btn_login" type="button" >Log in</button>
+         <label >Password</label>
+        <input type="password" required v-model="password">
+      </form>
+      <button @click="onButtonClick(username, password)"></button>
   </div>
 </template>
 
 <script>
-import InputField from './InputField.vue' 
-
+require('dotenv').config()
+import router from '../router'
 export default {
   name: 'LoginField',
-  components:{
-    InputField
+  data(){
+    return{
+      username:'',
+      password:'',
+      url: process.env.VUE_APP_URL, 
+    }
   },
   methods:{
-    onClick (password) {
-      console.log(password)
-    },
-     data: function(){
-       return {
-         password: "sads",
-         user:"hello"
-       }
-     }
+    onButtonClick: async(username, password) =>{
+      let {success} = await postData(username,password)
+      if(success){
+        router.push("Home")
+      }
+    }
   }
+}
+
+async function postData(username, password) {
+  console.log(username,password)
+  return await (
+    await fetch(
+      `${process.env.VUE_APP_BASE_PATH}/login`,
+      {
+      method:'post',
+      headers:{
+        'content-type':'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          password
+        })
+      }
+      )
+      ).json()
 }
 </script>
 <style>

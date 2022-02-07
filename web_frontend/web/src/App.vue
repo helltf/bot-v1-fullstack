@@ -5,8 +5,6 @@
       <li><router-link class="link" to="/login">Login</router-link></li>
       <li><router-link class="link" to="/login">About</router-link></li>
     </ul>
-    
-    
   </div>
   <router-view />
 </template>

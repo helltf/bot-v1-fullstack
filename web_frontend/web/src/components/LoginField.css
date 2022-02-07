@@ -1,13 +1,4 @@
 
-.login_box{
-    width: 420px;
-    height: 250px;
-    box-sizing: border-box;
-    border: 1px solid black;
-
-}
-
-
 .login_text{
     text-align:center;
 }
