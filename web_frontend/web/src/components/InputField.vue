@@ -4,9 +4,9 @@
         <input class="input_field" :value="v_model" v-bind:id="idname" v-bind:type="type"  v-bind:placeholder="placeholder" v-bind:maxlength="maxlength" >
     </div>
 -->
-<label>
-    <input type="text" :label="label" :value="value" @input="updateValue($event.target.value)" />
-  </label>
+<div>
+    <input type="text" :label="label" v-bind:value="value" @input="updateValue($event.target.value)" />
+  </div>
 </template>
 
 <script>
@@ -19,6 +19,11 @@ export default {
     },
   },
   methods:{
+    data(){
+      return{
+        value: this.value
+      }
+    },
     updateValue(value){
       this.$emit('input', value)
     }

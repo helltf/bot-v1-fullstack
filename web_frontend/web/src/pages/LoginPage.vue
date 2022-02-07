@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import LoginField from './LoginField.vue' 
+import LoginField from '../components/LoginField.vue' 
 
 export default {
-  name: 'App',
+  name: 'LoginPage',
   components: {
     LoginField
   }

@@ -2,9 +2,10 @@
   <div class="login_box">
       <h1 class="login_text">LOGIN</h1>
       <div class = input_username_password>
-        <InputField :value="password"/>
+        <InputField :value="data().password"/>
+
       </div>
-     <button v-on:click= "onClick(password)" class="btn_login" type="button" >Log in</button>
+     <button v-on:click= "onClick(data().password)" class="btn_login" type="button" >Log in</button>
   </div>
 </template>
 
@@ -19,7 +20,13 @@ export default {
   methods:{
     onClick (password) {
       console.log(password)
-    }
+    },
+     data: function(){
+       return {
+         password: "sads",
+         user:"hello"
+       }
+     }
   }
 }
 </script>
