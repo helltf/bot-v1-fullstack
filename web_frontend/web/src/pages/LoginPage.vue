@@ -1,7 +1,5 @@
 <template>
-  <div class = "login_component">
     <LoginField ></LoginField>
-  </div>
 </template>
 
 <script>
