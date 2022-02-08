@@ -3,6 +3,10 @@
     align-content: flex-end;
     display: block;  
     position: absolute;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    display: table-cell; 
 }
 
 .submit-btn{
@@ -17,19 +21,15 @@
     font-size: 20px;
 }
 
-.login-box{
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    display: table-cell; 
-    vertical-align: middle; 
+.login-form fieldset legend{
+    font-size: 20pt;
 }
 
 html, body {
     height:100%;
 }
 
-.login-form>input{
+.login-form> fieldset >input{
     padding: 10px;
     margin-bottom: 10px;
     width: 200px;
