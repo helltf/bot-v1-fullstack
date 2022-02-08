@@ -1,18 +1,28 @@
 <template>
-  <div id="nav">
-    <ul>
-      <li><router-link class="link" to="/">Home</router-link></li>
-      <li><router-link class="link" to="/login">Weather</router-link></li>
-      <li><router-link class="link" to="/login">About</router-link></li>
-      <li><router-link class="link" to="/login">Login</router-link></li>
-    </ul>
-  </div>
+  <Navbar/>
   <router-view />
 </template>
 
 <script>
+
+import { useCookies } from 'vue3-cookies'
+const { cookies } = useCookies()
+import Navbar from './components/Navbar.vue'
+
 export default {
   name: 'App',
+  components:{
+    Navbar
+  },
+  mounted(){
+    this.user_login = cookies.get("user_login") ? "" : cookies.get("user_login")
+  },
+  data(){
+    return{
+      user_login:''
+    }
+  }
+  
 }
 </script>
 
