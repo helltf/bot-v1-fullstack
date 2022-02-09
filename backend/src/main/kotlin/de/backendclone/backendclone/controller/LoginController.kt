@@ -1,11 +1,7 @@
 package de.backendclone.backendclone.controller
 
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.util.JSONPObject
-import com.google.gson.Gson
 import de.backendclone.backendclone.dto.LoginDTO
-import org.apache.tomcat.util.json.JSONParser
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 
@@ -22,10 +18,11 @@ class LoginController: LoginInterface{
     }
 
     override fun checkToken(body: JsonNode): ResponseEntity<Map<String, Boolean>> {
-        val token = body.get("token").asText()
-        val user_login = body.get("user_login").asText()
 
-        val valid = token == "abcde" && user_login == "as"
+        val token = body.get("token").asText()
+        val user = body.get("signed_in").asText()
+
+        val valid = token == "abcde" && user == "helltf"
         return ResponseEntity.ok(mapOf("success" to valid))
     }
 }
