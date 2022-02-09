@@ -7,6 +7,7 @@ class LoginDTO(success: Boolean = false, token: String, username:String) {
     val success = success
     val token = token
     val username = username
+    val error = if(success) "" else "Your username or password is not correct!"
 
 
     fun toJSON():String{
