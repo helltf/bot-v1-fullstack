@@ -8,7 +8,7 @@
 import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()
 import Navbar from './components/Navbar.vue'
-
+import router from './router'
 export default {
   name: 'App',
   components:{
@@ -16,6 +16,9 @@ export default {
   },
   mounted(){
     this.user_login = cookies.get("user_login") ? "" : cookies.get("user_login")
+    if(this.user_login !== ""){
+      router.push("/login")
+    }
   },
   data(){
     return{
