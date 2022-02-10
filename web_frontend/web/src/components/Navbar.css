@@ -4,6 +4,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    margin-right: 50px;
+    margin-left:50px;
 }
 
 #nav{
@@ -13,18 +15,11 @@
     background-color: #333;
 }
 
-
-.nav-list{
-    margin-right: 50px;
-    margin-left:50px;
-}
-
 .link{
     float: left;
     display: inline;
     font-size: 20pt;
     padding: 5px;
-    
 }
 
 #link-home, #link-weather, #link-about, #link-login{
