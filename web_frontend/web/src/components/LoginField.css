@@ -1,8 +1,4 @@
 
-.wrapper{
-
-}
-
 .form-wrapper{
     margin-left: 200px;
     margin-right: 250px;
@@ -55,6 +51,10 @@
 
 .login-form fieldset legend{
     font-size: 20pt;
+}
+
+.login-form fieldset{
+    box-shadow:  10px 10px 8px #888888;
 }
 
 .inner-login{
