@@ -34,7 +34,7 @@
 </template>
 
 <script>
-require('dotenv').config()
+
 import router from '../router'
 import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()
@@ -87,9 +87,10 @@ async function postLogin(username, password) {
 }
 
 async function postData(path, body) {
+	console.log(process.env)
 	try{	
 		return await (
-		await fetch(`${process.env.VUE_APP_BASE_PATH}${path}`, {
+		await fetch(`${process.env.VUE_APP_BACKEND_URL}${path}`, {
 			method: 'post',
 			headers: {
 				'content-type': 'application/json',
