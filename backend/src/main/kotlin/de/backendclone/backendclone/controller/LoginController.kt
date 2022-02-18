@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class LoginController: LoginInterface{
+    val validToken = "4lOsd23"
+    val validUser = "user"
      override fun postLogin(body: JsonNode): ResponseEntity<LoginDTO> {
          val username = body.get("username").asText()
          val password = body.get("password").asText()
 
-         val isValidLogin = username == "helltf" && password == "11"
-         val loginData = LoginDTO(isValidLogin, "abcde", username)
+         val isValidLogin = username == validUser && password == ""
+         val loginData = LoginDTO(isValidLogin, validToken, username)
 
          return ResponseEntity.ok(loginData)
     }
 
     override fun checkToken(body: JsonNode): ResponseEntity<Map<String, Boolean>> {
-
+        println(body)
         val token = body.get("token").asText()
         val user = body.get("signed_in").asText()
-
-        val valid = token == "abcde" && user == "helltf"
+        println("$user $token")
+        val valid = token == validToken && user == validUser
         return ResponseEntity.ok(mapOf("success" to valid))
     }
 }
