@@ -9,6 +9,7 @@ import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()
 import Navbar from './components/Navbar.vue'
 import router from './router'
+ 
 export default {
   name: 'App',
   components:{
