@@ -1,3 +1,5 @@
 web_frontend/web/.env
 gql/.idea
 gql/venv
+gql/__pycache__
+gql/schema/__pycache__
