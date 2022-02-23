@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from ariadne import gql, load_schema_from_path, graphql_sync
+from flask import Flask,jsonify, request
+from data import all_commands
+from schema.create import create_schema
+app = Flask(__name__)
+all_commands()
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+@app.route('/gql', methods=["POST"])
+def graphql_server():
+    data = request.get_json()
+
+    schema = create_schema()
+    success, result = graphql_sync(schema, data, context_value=request, debug=app.debug)
+
+    status_code = 200 if success else 400
+    return jsonify(result), status_code
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    app.run(debug=True, port=3001)
