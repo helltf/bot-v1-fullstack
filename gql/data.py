@@ -1,28 +1,13 @@
-class Command:
-    name: str
-    count: int
-    required_Permissions: int
-
-    def __init__(self, name, count, required_Permissions):
-        self.name = name
-        self.count = count
-        self.required_Permissions = required_Permissions
-
-
-COMMANDS = [
-    Command("abvv", 3, 3),
-    Command("erw", 3, 3),
-    Command("gds", 3, 3),
-    Command("sad", 3, 3)
-]
+from classes.command_class import Command
+from database import database
 
 
 def all_commands():
-    return COMMANDS
+    raw_command_list = database.execute_query_all("SELECT * FROM commands")
+    commands = map(lambda x: Command(x), raw_command_list)
+    return commands
 
 
 def get_command(name: str):
-    for command in COMMANDS:
-        if command.name == name:
-            return command
-    return
+    raw_command = database.execute_query_one("SELECT * FROM commands WHERE name = '{}'".format(name))
+    return Command(raw_command)
