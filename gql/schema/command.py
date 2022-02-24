@@ -9,6 +9,10 @@ COMMAND_TYPEDEF = """
         name: String!
         count: Int!
         required_permissions: Int!
+        description: String!
+        required_parameters: [String]!
+        optional_parameters: [String]!
+        id: Int!
     }
 """
 
@@ -20,4 +24,4 @@ def resolve_commands(_, info: GraphQLResolveInfo) -> List[Command]:
 
 @query.field("command")
 def resolve_command(_, info: GraphQLResolveInfo, name: str) -> Command:
-    return get_command()
+    return get_command(name)
