@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 from classes.command_class import Command
 from database import database
 
@@ -8,6 +10,9 @@ def all_commands():
     return commands
 
 
-def get_command(name: str):
-    raw_command = database.execute_query_one("SELECT * FROM commands WHERE name = '{}'".format(name))
+def get_command(filter_info: Dict[str, Any]):
+    query = "SELECT * FROM commands"
+    for k, v in filter_info.items():
+        query += " WHERE {} = %s".format(k)
+    raw_command = database.execute_query_one(query, list(filter_info.values()) )
     return Command(raw_command)
