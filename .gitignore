@@ -3,3 +3,4 @@ gql/.idea
 gql/venv
 gql/__pycache__
 gql/schema/__pycache__
+gql/.env
