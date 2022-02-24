@@ -1,10 +1,11 @@
-from ariadne import MutationType, QueryType
+from ariadne import MutationType, QueryType, ObjectType
 
 MAIN_TYPEDEF = """
     type Query {
-    commands:[Command]
-    command(name:String!):Command!
+        commands:[Command]
+        command(name:String, id:ID):Command
     }
+    
     """
 
 query = QueryType()
