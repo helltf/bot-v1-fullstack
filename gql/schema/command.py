@@ -16,12 +16,11 @@ COMMAND_TYPEDEF = """
     }
 """
 
-
 @query.field("commands")
 def resolve_commands(_, info: GraphQLResolveInfo) -> List[Command]:
     return all_commands()
 
 
 @query.field("command")
-def resolve_command(_, info: GraphQLResolveInfo, name: str) -> Command:
-    return get_command(name)
+def resolve_command(_, info: GraphQLResolveInfo,  **filter_info) -> Command:
+    return get_command(filter_info)
