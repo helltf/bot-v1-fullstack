@@ -5,5 +5,4 @@ from schema.command import COMMAND_TYPEDEF
 
 
 def create_schema() -> GraphQLSchema:
-    print(mutation)
     return make_executable_schema([MAIN_TYPEDEF, COMMAND_TYPEDEF], [query])
