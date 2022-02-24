@@ -23,7 +23,8 @@ def execute_query_all(query: str):
     return cursor.fetchall()
 
 
-def execute_query_one(query: str):
+def execute_query_one(query: str, values=None):
+    values = values if values is not None else []
     cursor = twitch_db.cursor()
-    cursor.execute(query)
+    cursor.execute(query, values)
     return cursor.fetchone()
