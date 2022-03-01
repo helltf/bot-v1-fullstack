@@ -37,23 +37,17 @@
 
 import router from '../router'
 import { useCookies } from 'vue3-cookies'
-import {postLogin, checkToken, TOKEN, SIGNED_IN} from '../request/login'
+import {postLogin, TOKEN, SIGNED_IN} from '../request/login'
 
 const { cookies } = useCookies()
 
 export default {
 	name: 'LoginField',
+	inject:['user'],
 	async mounted() {
-		this.loading = true
-		let { success } = await checkToken(cookies)
-
-		if (success) {
-			router.push("/")
-		}else{
-			cookies.remove(TOKEN)
-			cookies.remove(SIGNED_IN)
+		if(this.user.signed_in !== null){
+			router.push('/')
 		}
-		this.loading = false
 	},
 	data() {
 		return {
@@ -69,6 +63,7 @@ export default {
 			if (success) {
 				cookies.set(TOKEN, token, '24h')
 				cookies.set(SIGNED_IN, user_login, '24h')
+				this.user.signed_in = user_login
 				router.push('/')
 			}else{
 				this.errormessage = error
