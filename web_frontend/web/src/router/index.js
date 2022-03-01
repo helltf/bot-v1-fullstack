@@ -23,6 +23,11 @@ const routes = [
 		name: 'Weather',
 		component: HomePage,
 	},
+	{
+		path: '/user',
+		name: 'User',
+		component: HomePage,
+	},
 ]
 
 const router = createRouter({
