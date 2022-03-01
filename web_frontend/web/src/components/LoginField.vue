@@ -37,9 +37,9 @@
 
 import router from '../router'
 import { useCookies } from 'vue3-cookies'
+import {postLogin, checkToken, TOKEN, SIGNED_IN} from '../request/login'
+
 const { cookies } = useCookies()
-let TOKEN = "token"
-let SIGNED_IN = "signed_in"
 
 export default {
 	name: 'LoginField',
@@ -59,7 +59,6 @@ export default {
 		return {
 			username: '',
 			password: '',
-			url: process.env.VUE_APP_URL,
 			loading: false,
 			errormessage:null
 		}
@@ -78,29 +77,8 @@ export default {
 		},
 	},
 }
-async function checkToken(token, signed_in) {
-	return await postData('/token', { token,  signed_in})
-}
 
-async function postLogin(username, password) {
-	return await postData('/login', { username, password })
-}
 
-async function postData(path, body) {
-	try{	
-		return await (
-		await fetch(`${process.env.VUE_APP_BACKEND_URL}${path}`, {
-			method: 'post',
-			headers: {
-				'content-type': 'application/json',
-			},
-			body: JSON.stringify( body ),
-		})
-	).json()
-	}catch{
-		alert("Error reaching backend")
-	}
-}
 </script>
 <style>
 @import './LoginField.css';
