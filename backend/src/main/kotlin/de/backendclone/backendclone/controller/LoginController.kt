@@ -20,10 +20,9 @@ class LoginController: LoginInterface{
     }
 
     override fun checkToken(body: JsonNode): ResponseEntity<Map<String, Boolean>> {
-        println(body)
         val token = body.get("token").asText()
         val user = body.get("signed_in").asText()
-        println("$user $token")
+        
         val valid = token == validToken && user == validUser
         return ResponseEntity.ok(mapOf("success" to valid))
     }
