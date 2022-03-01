@@ -9,21 +9,28 @@ const { cookies } = useCookies()
 import Navbar from './components/Navbar.vue'
 import router from './router'
 import { checkToken } from './request/login'
+import { provide, ref } from '@vue/runtime-core'
 
 export default {
 	name: 'App',
-	inject: ['user'],
 	components: {
 		Navbar,
 	},
+	setup() {
+		const current_user = ref(null)
+		provide('user', current_user)
+		provide('setUser', (user) => {
+      console.log("new User = " + user)
+			current_user.value = user
+		})
+	},
 	async mounted() {
-		this.user.signed_in = cookies.get('signed_in')
-		if (!this.user.signed_in) {
+		if (!this.user) {
 			router.push('/login')
 		} else {
 			let success = await checkToken(cookies)
 			if (!success) {
-				this.user.signed_in = undefined
+				this.user = null
 			}
 		}
 	},
