@@ -45,7 +45,8 @@ export default {
 	name: 'LoginField',
 	async mounted() {
 		this.loading = true
-		let { success } = await checkToken(cookies.get(TOKEN), cookies.get(SIGNED_IN))
+		let { success } = await checkToken(cookies)
+
 		if (success) {
 			router.push("/")
 		}else{
@@ -53,7 +54,6 @@ export default {
 			cookies.remove(SIGNED_IN)
 		}
 		this.loading = false
-
 	},
 	data() {
 		return {
