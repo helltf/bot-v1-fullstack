@@ -15,9 +15,5 @@ const app = createApp({
     render: () => h(App)
 }).use(router)
 
-app.provide('user', {
-  signed_in: null
-})
-
 app.mount('#app')
 
