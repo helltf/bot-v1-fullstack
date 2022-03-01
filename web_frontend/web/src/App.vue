@@ -20,7 +20,6 @@ export default {
 		const current_user = ref(null)
 		provide('user', current_user)
 		provide('setUser', (user) => {
-      console.log("new User = " + user)
 			current_user.value = user
 		})
 	},
