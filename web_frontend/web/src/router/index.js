@@ -1,12 +1,20 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginPage from '../pages/LoginPage.vue'
 import HomePage from '../pages/HomePage.vue'
+import LogoutPage from '../pages/LogoutPage.vue'
+import EmptyPage from '../pages/EmptyPage.vue'
+import CommandPage from '../pages/CommandPage.vue'
 
 const routes = [
 	{
 		path: '/login',
 		name: 'Login',
 		component: LoginPage,
+	},
+	{
+		path: '/logout',
+		name: 'Logout',
+		component: LogoutPage,
 	},
 	{
 		path: '/',
@@ -16,17 +24,22 @@ const routes = [
 	{
 		path: '/about',
 		name: 'About',
-		component: HomePage,
+		component: EmptyPage,
+	},
+	{
+		path: '/commands',
+		name: 'Commands',
+		component: CommandPage,
+	},
+	{
+		path: '/user-info',
+		name: 'User',
+		component: EmptyPage,
 	},
 	{
 		path: '/weather',
 		name: 'Weather',
-		component: HomePage,
-	},
-	{
-		path: '/user',
-		name: 'User',
-		component: HomePage,
+		component: EmptyPage,
 	},
 ]
 
