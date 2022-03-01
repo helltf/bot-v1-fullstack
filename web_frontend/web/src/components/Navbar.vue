@@ -14,7 +14,7 @@
 				<router-link class="link" id="link-about" to="/about"
 					>About</router-link
 				>
-				<router-link class="link" id="link-login" to="/login"
+				<router-link class="link" id="link-login" to="/login" v-if="!this.user.signed_in"
 					>Login</router-link
 				>
 			</div>
@@ -25,6 +25,7 @@
 <script>
 export default {
 	name: 'Navbar',
+	inject:["user"]
 }
 </script>
 
