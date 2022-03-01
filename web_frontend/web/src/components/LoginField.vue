@@ -87,7 +87,6 @@ async function postLogin(username, password) {
 }
 
 async function postData(path, body) {
-	console.log(process.env)
 	try{	
 		return await (
 		await fetch(`${process.env.VUE_APP_BACKEND_URL}${path}`, {
