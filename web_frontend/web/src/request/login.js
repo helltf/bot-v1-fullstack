@@ -1,3 +1,7 @@
+
+const TOKEN = "token"
+const SIGNED_IN = "signed_in"
+
 const postData = async (path, body) => {
 	try {
 		return await (
@@ -14,16 +18,22 @@ const postData = async (path, body) => {
 	}
 }
 
- const checkToken = async (token, signed_in) => {
-	return await postData('/token', { token,  signed_in})
+ const checkToken = async (cookies) => {
+     let token = cookies.get(TOKEN)
+     let signed_in = cookies.get(SIGNED_IN)
+     let {success} =  await postData('/token', { token,  signed_in})
+
+     if(!success){
+			cookies.remove(TOKEN)
+			cookies.remove(SIGNED_IN)
+     }
+
+	return success
 }
 
 const postLogin = async (username, password) => {
 	return await postData('/login', { username, password })
 }
-
-const TOKEN = "token"
-const SIGNED_IN = "signed_in"
 
 
 export { postLogin, checkToken, TOKEN, SIGNED_IN }
