@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import LoginField from '../components/LoginField.vue' 
+import LoginField from '../components/loginfield/LoginField.vue' 
 
 export default {
   name: 'LoginPage',
