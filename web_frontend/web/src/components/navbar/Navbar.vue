@@ -31,7 +31,7 @@
 
 <script>
 import { inject } from '@vue/runtime-core'
-import { SIGNED_IN } from '../../request/login'
+import { SIGNED_IN } from '../../js-functions/request/login'
 import router from '../../router'
 import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()

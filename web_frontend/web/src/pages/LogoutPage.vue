@@ -4,7 +4,7 @@
 
 <script>
 import { inject } from '@vue/runtime-core'
-import {deleteCookies} from '../request/logout'
+import {deleteCookies} from '../js-functions/request/logout'
 import router from '../router'
 
 export default {

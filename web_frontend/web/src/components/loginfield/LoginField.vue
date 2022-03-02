@@ -36,7 +36,7 @@
 <script>
 
 import router from '../../router'
-import {postLogin, TOKEN, SIGNED_IN} from '../../request/login'
+import {postLogin, TOKEN, SIGNED_IN} from '../../js-functions/request/login'
 import { inject } from '@vue/runtime-core'
 import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()

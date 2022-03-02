@@ -6,9 +6,9 @@
 <script>
 import { useCookies } from 'vue3-cookies'
 const { cookies } = useCookies()
-import Navbar from './components/Navbar/Navbar.vue'
+import Navbar from './components/navbar/Navbar.vue'
 import router from './router'
-import { checkToken } from './request/login'
+import { checkToken } from './js-functions/request/login'
 import { provide, ref } from '@vue/runtime-core'
 
 export default {
