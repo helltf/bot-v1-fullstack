@@ -12,7 +12,7 @@
 				<th>Params (req)</th>
 				<th>Params (opt)</th>
 			</tr>
-			<tr v-for="command of this.commands.values" :key="command.name">
+			<tr v-for="command of filteredCommands()" :key="command.name">
 				<td>{{ command.name.toLowerCase() }}</td>
 				<td class="centered">{{ command.count }}</td>
 				<td>{{ command.description }}</td>
@@ -27,6 +27,7 @@
 <script>
 import { getCommands } from '../../js-functions/gql/commands'
 import { orderBy } from '../../js-functions/order'
+import { filter } from '../../js-functions/filter'
 import SearchBox from '../commandtable/SearchBox.vue'
 
 export default {
@@ -36,6 +37,7 @@ export default {
 	},
 	data() {
 		return {
+			search_value: '',
 			commands: {
 				orderedBy: {
 					coloumn: undefined,
@@ -43,7 +45,6 @@ export default {
 				},
 				values: [],
 			},
-			search_value: '',
 		}
 	},
 	async mounted() {
@@ -55,9 +56,16 @@ export default {
 	},
 	methods: {
 		orderByKey(key) {
-			this.commands = orderBy(key, this.commands)
+			this.commands = orderBy(key, this.commands )
 		},
-	},
+		filteredCommands() {
+			if (this.commands.values.length === 0) {
+				return []
+			}
+			let filtered = filter(this.commands.values, this.search_value)
+			return filtered
+		},
+	}
 }
 </script>
 
