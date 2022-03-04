@@ -15,7 +15,6 @@
 }
 
 .search-fieldset{
-    border: 2px solid red;
     border-color: var(--table-green);
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -27,6 +26,7 @@
     font-size: 15pt;
     outline: none;
     margin: 5px;
+    width: 400px;
 }
 
 .search-img{
