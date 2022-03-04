@@ -1,7 +1,7 @@
 <template>
 	<div class="command-input">
 		<fieldset class="search-fieldset">
-			<legend>Search</legend>
+			<legend>{{legendValue}}</legend>
 			<form class="search-form">
 				<input
 					class="search-input"
@@ -23,6 +23,7 @@ export default {
 	name: 'SearchBox',
 	props: {
 		modelValue: String,
+		legendValue: String
 	},
 }
 </script>

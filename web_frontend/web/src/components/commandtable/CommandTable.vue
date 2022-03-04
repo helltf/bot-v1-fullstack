@@ -1,7 +1,7 @@
 <template>
-	<div class="table">
-		<SearchBox v-model="search_value"></SearchBox>
-		<table class="command-table" v-if="this.commands.length !== 0">
+	<div class="table" >
+		<SearchBox v-model="search_value" :legendValue="'Search'"/>
+		<table class="command-table" v-if="this.commands.length !== 0" >
 			<tr>
 				<th class="clickable" @click="orderByKey('name')">Name</th>
 				<th class="clickable" @click="orderByKey('counter')">Counter</th>
