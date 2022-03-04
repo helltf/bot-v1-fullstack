@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class LoginController: LoginInterface{
     val validToken = "4lOsd23"
-    val validUser = "user"
+    val validUser = "helltf"
      override fun postLogin(body: JsonNode): ResponseEntity<LoginDTO> {
          val username = body.get("username").asText()
          val password = body.get("password").asText()
