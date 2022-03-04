@@ -59,11 +59,7 @@ export default {
 			this.commands = orderBy(key, this.commands )
 		},
 		filteredCommands() {
-			if (this.commands.values.length === 0) {
-				return []
-			}
-			let filtered = filter(this.commands.values, this.search_value)
-			return filtered
+			return filter(this.commands.values, this.search_value)
 		},
 	}
 }
