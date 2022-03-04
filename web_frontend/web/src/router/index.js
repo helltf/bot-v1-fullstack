@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage.vue'
 import LogoutPage from '../pages/LogoutPage.vue'
 import EmptyPage from '../pages/EmptyPage.vue'
 import CommandPage from '../pages/CommandPage.vue'
+import StatsPage from '../pages/StatsPage.vue'
 
 const routes = [
 	{
@@ -37,9 +38,9 @@ const routes = [
 		component: EmptyPage,
 	},
 	{
-		path: '/weather',
-		name: 'Weather',
-		component: EmptyPage,
+		path: '/stats',
+		name: 'Stats',
+		component: StatsPage,
 	},
 ]
 
