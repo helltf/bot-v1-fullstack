@@ -48,8 +48,6 @@
     cursor: pointer;
 }
 
-
-
 .login-form fieldset legend{
     font-size: 20pt;
 }
@@ -67,6 +65,13 @@
 
 html, body {
     height:100%;
+}
+
+.login-fieldset{
+    border: 2px solid;
+    border-color: var(--table-green);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .login-form> fieldset input{

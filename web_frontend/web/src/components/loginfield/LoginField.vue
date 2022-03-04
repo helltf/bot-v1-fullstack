@@ -4,7 +4,7 @@
 <div class="container">
 	<div v-if="!loading" class="form-wrapper">
 		<form class="login-form" @keyup.enter="submit(username, password)">
-			<fieldset>
+			<fieldset class="login-fieldset">
 				<legend>Login</legend>
 				<span class="error-msg">{{errormessage}}</span>
 				<div class="inner-login">
