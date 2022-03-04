@@ -4,7 +4,7 @@
 			<div class="nav-begin nav-list">
 				<router-link class="link" to="/">Home</router-link>
 				<router-link class="link" to="/commands">Commands</router-link>
-				<router-link class="link" to="/weather">Weather</router-link>
+				<router-link class="link" to="/stats">Stats</router-link>
 			</div>
 
 			<div class="nav-end nav-list">
