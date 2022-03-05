@@ -11,25 +11,23 @@ class ColorHistory:
         self.register_time = parse_unix_date(register_time)
 
 
-
 class Cookie:
-    def __init__(self,amount, resets, average):
+    def __init__(self, amount, resets, average):
         self.amount = amount
         self.resets = resets
         self.average = average
-
 
 
 class Rps:
     def __init__(self, raw):
         self.id, self.draw, self.win, self.lose = raw
 
+
 class Timeout:
     def __init__(self, raw):
-        pass
-
+        self.amount = raw
 
 
 class Ban:
-    def __init__(self):
-        pass
+    def __init__(self, amount):
+        self.amount = amount
