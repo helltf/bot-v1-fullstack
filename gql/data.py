@@ -17,6 +17,9 @@ def get_command(filter: Dict[str, Any]):
 
 
 def get_user(filter: Dict[str, Any]):
+    if "username" not in filter and "twitch_id" not in filter:
+        return None
+
     raw_user = get_one("TWITCH_USER", filter)
     return User(raw_user)
 
