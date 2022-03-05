@@ -1,4 +1,7 @@
 from ariadne import MutationType, QueryType, ObjectType
+from graphql import GraphQLResolveInfo
+
+from data import get_stats
 
 MAIN_TYPEDEF = """
     type Query {
@@ -10,4 +13,10 @@ MAIN_TYPEDEF = """
 
 query = QueryType()
 user = ObjectType("User")
+stats = ObjectType("Stats")
 mutation = MutationType()
+
+
+@user.field("stats")
+def resolve(parent, info, **kwargs):
+    return {id: parent.id}
