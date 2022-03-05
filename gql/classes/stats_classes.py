@@ -13,8 +13,11 @@ class ColorHistory:
 
 
 class Cookie:
-    def __init__(self):
-        pass
+    def __init__(self,amount, resets, average):
+        self.amount = amount
+        self.resets = resets
+        self.average = average
+
 
 
 class Rps:
@@ -22,8 +25,9 @@ class Rps:
         self.id, self.draw, self.win, self.lose = raw
 
 class Timeout:
-    def __init__(self):
+    def __init__(self, raw):
         pass
+
 
 
 class Ban:
