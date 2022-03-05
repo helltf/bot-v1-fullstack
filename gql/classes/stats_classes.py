@@ -6,7 +6,7 @@ from utility.date_parser import parse_unix_date
 class ColorHistory:
     def __init__(self, raw):
         self.id, color_history, last_change, register_time = raw
-        self.color_history = json.loads(color_history)
+        self.history = json.loads(color_history)
         self.last_change = parse_unix_date(last_change)
         self.register_time = parse_unix_date(register_time)
 
@@ -18,9 +18,8 @@ class Cookie:
 
 
 class Rps:
-    def __init__(self):
-        pass
-
+    def __init__(self, raw):
+        self.id, self.draw, self.win, self.lose = raw
 
 class Timeout:
     def __init__(self):
