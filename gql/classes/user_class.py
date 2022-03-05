@@ -7,14 +7,8 @@ class User:
     color: str
     permissions: int
     register_time: datetime
-    displayname: str
+    display_name: str
 
     def __init__(self, raw):
-        username, twitch_id, color, permissions, register_time, displayname = raw
-        self.username = username
-        self.id = twitch_id
-        self.color = color
-        self.permissions = permissions
-        print(register_time)
+        self.username, self.id, self.color, self.permissions, register_time, self.display_name = raw
         self.register_time = datetime.fromtimestamp(register_time / 1000)
-        self.displayname = displayname
