@@ -1,0 +1,32 @@
+import json
+
+from utility.date_parser import parse_unix_date
+
+
+class ColorHistory:
+    def __init__(self, raw):
+        self.id, color_history, last_change, register_time = raw
+        self.color_history = json.loads(color_history)
+        self.last_change = parse_unix_date(last_change)
+        self.register_time = parse_unix_date(register_time)
+
+
+
+class Cookie:
+    def __init__(self):
+        pass
+
+
+class Rps:
+    def __init__(self):
+        pass
+
+
+class Timeout:
+    def __init__(self):
+        pass
+
+
+class Ban:
+    def __init__(self):
+        pass
