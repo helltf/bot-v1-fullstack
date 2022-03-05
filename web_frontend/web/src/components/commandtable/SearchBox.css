@@ -1,10 +1,4 @@
 
-.command-input{
-    margin: 10px 20px;
-    margin-top: 30px;
-    display: flex;
-    justify-content: flex-end;
-}
 
 
 *::before,
@@ -26,7 +20,6 @@
     font-size: 15pt;
     outline: none;
     margin: 5px;
-    width: 400px;
 }
 
 .search-img{
