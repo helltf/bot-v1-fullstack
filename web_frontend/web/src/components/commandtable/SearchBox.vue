@@ -1,5 +1,5 @@
 <template>
-	<div class="command-input">
+	<div v-bind:class="classValue">
 		<fieldset class="search-fieldset">
 			<legend>{{legendValue}}</legend>
 			<form class="search-form">
@@ -23,8 +23,9 @@ export default {
 	name: 'SearchBox',
 	props: {
 		modelValue: String,
-		legendValue: String
-	},
+		legendValue: String,
+		classValue:String
+	}
 }
 </script>
 
