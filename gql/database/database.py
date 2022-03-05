@@ -19,9 +19,10 @@ def connect_db():
 twitch_db = connect_db()
 
 
-def execute_query_all(query: str):
+def execute_query_all(query: str, values=None):
+    values = values if values is not None else []
     cursor = twitch_db.cursor()
-    cursor.execute(query)
+    cursor.execute(query, values)
     return cursor.fetchall()
 
 
