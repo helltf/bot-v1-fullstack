@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 from mysql import connector as db
 import os
 from dotenv import load_dotenv
@@ -28,3 +30,14 @@ def execute_query_one(query: str, values=None):
     cursor = twitch_db.cursor(buffered=True)
     cursor.execute(query, values)
     return cursor.fetchone()
+
+
+def get_one(tablename: str, filter: Dict[str, Any]):
+    query = "SELECT * FROM {}".format(tablename)
+
+    for k, v in filter.items():
+        query += " WHERE {} = %s".format(k)
+
+    raw = execute_query_one(query, list(filter.values()))
+
+    return raw
