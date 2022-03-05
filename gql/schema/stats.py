@@ -55,9 +55,9 @@ STATS_TYPEDEF_LIST = [COLOR_HISTORY_TYPEDEF, COOKIE_TYPEDEF, RPS_TYPEDEF, TIMEOU
 
 @stats.field("color_history")
 def resolve_color_history(parent, info: GraphQLResolveInfo, **kwargs) -> ColorHistory:
-    return get_color_history(parent.get(id))
+    return get_color_history(parent['id'])
 
 
 @stats.field("rps")
 def resolve_rps_stats(parent, info: GraphQLResolveInfo) -> Rps:
-    return get_rps_stats(parent.get(id))
+    return get_rps_stats(parent['id'])
