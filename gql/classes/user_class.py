@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from utility.date_parser import parse_unix_date
+
 
 class User:
     username: str
@@ -11,4 +13,4 @@ class User:
 
     def __init__(self, raw):
         self.username, self.id, self.color, self.permissions, register_time, self.display_name = raw
-        self.register_time = datetime.fromtimestamp(register_time / 1000)
+        self.register_time = parse_unix_date(register_time)
