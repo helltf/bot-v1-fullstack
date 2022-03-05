@@ -1,6 +1,7 @@
 from graphql import GraphQLResolveInfo
 
-from database.stats_db import get_color_history
+from classes.stats_classes import ColorHistory, Rps
+from database.stats_db import get_color_history, get_rps_stats
 from schema.types import stats
 
 STATS_TYPEDEF = """
@@ -53,5 +54,10 @@ STATS_TYPEDEF_LIST = [COLOR_HISTORY_TYPEDEF, COOKIE_TYPEDEF, RPS_TYPEDEF, TIMEOU
 
 
 @stats.field("color_history")
-def resolve_color_history(parent, info: GraphQLResolveInfo, **kwargs):
+def resolve_color_history(parent, info: GraphQLResolveInfo, **kwargs) -> ColorHistory:
     return get_color_history(parent.get(id))
+
+
+@stats.field("rps")
+def resolve_rps_stats(parent, info: GraphQLResolveInfo) -> Rps:
+    return get_rps_stats(parent.get(id))
