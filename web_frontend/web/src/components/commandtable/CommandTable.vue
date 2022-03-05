@@ -1,6 +1,6 @@
 <template>
 	<div class="table" >
-		<SearchBox v-model="search_value" :legendValue="'Search'"/>
+		<SearchBox v-model="search_value" :legendValue="'Search'" :classValue ="'command-input'"/>
 		<table class="command-table" v-if="this.commands.length !== 0" >
 			<tr>
 				<th class="clickable" @click="orderByKey('name')">Name</th>
