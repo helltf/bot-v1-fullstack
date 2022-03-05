@@ -1,7 +1,7 @@
 from graphql import GraphQLResolveInfo
 
-from classes.stats_classes import ColorHistory, Rps, Cookie
-from database.stats_db import get_color_history, get_rps_stats, get_cookie_stats
+from classes.stats_classes import ColorHistory, Rps, Cookie, Ban, Timeout
+from database.stats_db import get_color_history, get_rps_stats, get_cookie_stats, get_ban_stats, get_timeout_stats
 from schema.types import stats
 
 STATS_TYPEDEF = """
@@ -43,13 +43,13 @@ RPS_TYPEDEF = """
 
 TIMEOUT_TYPEDEF = """
     type TimeoutStats{
-        name:String!
+        amount: Int!
     }
 """
 
 BAN_TYPEDEF = """
     type BanStats{
-        name:String!
+        amount: Int!
     }
 """
 
@@ -69,3 +69,11 @@ def resolve_rps_stats(parent, info: GraphQLResolveInfo) -> Rps:
 @stats.field("cookie")
 def resolve_cookie_stats(parent, info: GraphQLResolveInfo) -> Cookie:
     return get_cookie_stats(parent['name'])
+
+@stats.field("ban")
+def resolve_ban_stats(parent, info: GraphQLResolveInfo) -> Ban:
+    return get_ban_stats(parent['name'])
+
+@stats.field("timeout")
+def resolve_ban_stats(parent, info: GraphQLResolveInfo) -> Timeout:
+    return get_timeout_stats(parent['name'])
