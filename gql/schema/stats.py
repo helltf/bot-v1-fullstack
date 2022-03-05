@@ -15,7 +15,10 @@ STATS_TYPEDEF = """
 """
 COLOR_HISTORY_TYPEDEF = """
     type ColorHistory{
-        name:String!
+        id:ID!
+        history:[String]
+        last_change: String
+        register_time: String
     }
 """
 
@@ -27,7 +30,10 @@ COOKIE_TYPEDEF = """
 
 RPS_TYPEDEF = """
     type RpsStats{
-        name:String!
+        id:ID!
+        draw: Int
+        win: Int
+        lose: Int
     }
 """
 
