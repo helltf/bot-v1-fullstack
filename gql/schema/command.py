@@ -24,3 +24,4 @@ def resolve_commands(_, info: GraphQLResolveInfo) -> List[Command]:
 @query.field("command")
 def resolve_command(_, info: GraphQLResolveInfo,  **filter_info) -> Command:
     return get_command(filter_info)
+
