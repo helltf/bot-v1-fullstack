@@ -1,6 +1,8 @@
 from ariadne import MutationType, QueryType, ObjectType
 from graphql import GraphQLResolveInfo
 
+from database.user_db import map_name_to_id, map_id_to_name
+
 MAIN_TYPEDEF = """
     type Query {
         commands:[Command]
@@ -17,4 +19,9 @@ mutation = MutationType()
 
 @user.field("stats")
 def resolve(parent, info, **kwargs):
-    return {id: parent.id}
+    result = None
+    if not parent.id:
+        result = map_name_to_id(parent.username)
+    else:
+        result = map_id_to_name(parent.id)
+    return result
