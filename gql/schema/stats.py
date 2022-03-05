@@ -1,7 +1,7 @@
 from graphql import GraphQLResolveInfo
 
-from classes.stats_classes import ColorHistory, Rps
-from database.stats_db import get_color_history, get_rps_stats
+from classes.stats_classes import ColorHistory, Rps, Cookie
+from database.stats_db import get_color_history, get_rps_stats, get_cookie_stats
 from schema.types import stats
 
 STATS_TYPEDEF = """
@@ -14,6 +14,7 @@ STATS_TYPEDEF = """
         ban: BanStats
     }
 """
+
 COLOR_HISTORY_TYPEDEF = """
     type ColorHistory{
         id:ID!
@@ -25,7 +26,9 @@ COLOR_HISTORY_TYPEDEF = """
 
 COOKIE_TYPEDEF = """
     type CookieStats{
-        name:String!
+        amount: Int
+        resets: Int
+        average: Float
     }
 """
 
@@ -61,3 +64,8 @@ def resolve_color_history(parent, info: GraphQLResolveInfo, **kwargs) -> ColorHi
 @stats.field("rps")
 def resolve_rps_stats(parent, info: GraphQLResolveInfo) -> Rps:
     return get_rps_stats(parent['id'])
+
+
+@stats.field("cookie")
+def resolve_cookie_stats(parent, info: GraphQLResolveInfo) -> Cookie:
+    return get_cookie_stats(parent['name'])
