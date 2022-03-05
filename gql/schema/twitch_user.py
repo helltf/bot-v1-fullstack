@@ -2,7 +2,7 @@ from typing import List
 from classes.user_class import User
 from schema.types import query, user
 from graphql import GraphQLResolveInfo
-from data import get_user, get_stats
+from database.user_db import get_user
 
 TWITCH_USER_TYPEDEF = """
     type User{

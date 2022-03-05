@@ -1,8 +1,6 @@
 from ariadne import MutationType, QueryType, ObjectType
 from graphql import GraphQLResolveInfo
 
-from data import get_stats
-
 MAIN_TYPEDEF = """
     type Query {
         commands:[Command]

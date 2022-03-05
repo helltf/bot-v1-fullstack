@@ -1,5 +1,6 @@
 from graphql import GraphQLResolveInfo
 
+from database.stats_db import get_color_history
 from schema.types import stats
 
 STATS_TYPEDEF = """

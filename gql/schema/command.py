@@ -1,8 +1,9 @@
 from typing import List
 
+from classes.command_class import Command
 from schema.types import query
 from graphql import GraphQLResolveInfo
-from data import Command, all_commands, get_command
+from database.command_db import all_commands, get_command
 
 COMMAND_TYPEDEF = """
     type Command{
