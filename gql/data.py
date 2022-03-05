@@ -33,6 +33,3 @@ def get_one(tablename: str, filter: Dict[str, Any]):
     raw = database.execute_query_one(query, list(filter.values()))
 
     return raw
-
-def fetchStats(id):
-    pass
