@@ -6,9 +6,8 @@
 	/>
 	<div v-if="!this.loading" class="loaded-container">
 		<h1 v-if="this.errorMessage">{{ errorMessage }}</h1>
-
-		<!--<h2 v-for="stats of getStats" :key="stats">{{ stats }}</h2>-->
 		<item-list :items="getUserItems" />
+        <item-list :items="value" v-for="(value, name) in getStats" :key="name"/>
 	</div>
 	<div v-else>
 		<h1>Loading</h1>
@@ -47,7 +46,7 @@ export default {
 	},
 	computed: {
 		getStats() {
-			if (!this.data) return []
+			if (!this.data) return {}
 			return this.data.stats
 		},
 		getUserItems() {
