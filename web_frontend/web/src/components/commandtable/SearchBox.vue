@@ -1,7 +1,7 @@
 <template>
 	<div v-bind:class="classValue">
 		<fieldset class="search-fieldset">
-			<legend>{{legendValue}}</legend>
+			<legend class="search-legend">{{legendValue}}</legend>
 			<form class="search-form">
 				<input
 					class="search-input"
