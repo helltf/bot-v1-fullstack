@@ -1,9 +1,10 @@
 <template>
-    <search-box :modelValue="searchValue" :legendValue="'User'" @keyup.enter="fetchPlayerStats('helltf')"/>
+    <search-box v-model="searchValue" :legendValue="'User'" @keyup.enter="fetchPlayerStats()"/>
 </template>
 
 <script>
 import SearchBox from '../components/commandtable/SearchBox.vue'
+import {getUserStats} from '../js-functions/gql/stats'
 
 export default {
     components:{
@@ -15,8 +16,8 @@ export default {
         }
     },
     methods:{
-        fetchPlayerStats(player){
-            return getUserStats()
+        fetchPlayerStats(){
+            return getUserStats(this.searchValue)
         }
     }
 }
