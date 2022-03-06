@@ -6,20 +6,23 @@
 	/>
 	<div v-if="!this.loading" class="loaded-container">
 		<h1 v-if="this.errorMessage">{{ errorMessage }}</h1>
-		<h2 v-for="stats of getStats" :key="stats">{{ stats }}</h2>
+
+		<!--<h2 v-for="stats of getStats" :key="stats">{{ stats }}</h2>-->
+		<item-list :items="getUserItems" />
 	</div>
-    <div v-else>
-        <h1>Loading</h1>
-    </div>
+	<div v-else>
+		<h1>Loading</h1>
+	</div>
 </template>
 
 <script>
 import SearchBox from '../components/commandtable/SearchBox.vue'
 import { getUserStats } from '../js-functions/gql/stats'
-
+import ItemList from '../components/infolist/InfoList.vue'
 export default {
 	components: {
 		SearchBox,
+		ItemList,
 	},
 	data() {
 		return {
@@ -46,6 +49,16 @@ export default {
 		getStats() {
 			if (!this.data) return []
 			return this.data.stats
+		},
+		getUserItems() {
+			let object = {}
+			if (this.data === null) return object
+
+			for (let [key, value] of Object.entries(this.data)) {
+				if (key !== 'stats') object[key] = value
+			}
+            
+			return object
 		},
 	},
 }
