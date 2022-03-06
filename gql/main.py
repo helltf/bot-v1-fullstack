@@ -29,4 +29,4 @@ def graphql_server():
 
 
 if __name__ == "__main__":
-    app.run(debug=os.getenv("DEBUG"), port=os.getenv("PORT"))
+    app.run(debug=os.getenv("DEBUG") == "True", port=int(os.getenv("PORT")))
