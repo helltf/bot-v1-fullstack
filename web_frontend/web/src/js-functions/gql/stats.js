@@ -1,8 +1,8 @@
 import { request, gql } from 'graphql-request'
+import { Resource } from '../class/Resource'
 
-
-const getUserStats = async (user) => {
-    const query = gql`
+const getStatsQuery = (user) => {
+	return gql`
     query{
         user(username:"${user}"){
             id,
@@ -34,7 +34,17 @@ const getUserStats = async (user) => {
         }
     }
     `
-    return await request(process.env.VUE_APP_GQL_URL, query)
 }
 
-export {getUserStats}
+const getUserStats = async (user) => {
+	const query = getStatsQuery(user)
+
+	try {
+		let res = await request(process.env.VUE_APP_GQL_URL, query)
+		return Resource.ok(res)
+	} catch (e) {
+		return Resource.error(e)
+	}
+}
+
+export { getUserStats }
