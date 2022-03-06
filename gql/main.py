@@ -1,3 +1,5 @@
+import os
+
 from ariadne import gql, load_schema_from_path, graphql_sync
 from flask import Flask, jsonify, request
 from schema.create import create_schema
@@ -5,6 +7,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
 
 @app.route('/gql', methods=["GET"])
 def send_error():
@@ -26,4 +29,4 @@ def graphql_server():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=3001)
+    app.run(debug=os.getenv("DEBUG"), port=os.getenv("PORT"))
