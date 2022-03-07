@@ -1,7 +1,11 @@
 <template>
-	<div class="table" >
-		<SearchBox v-model="search_value" :legendValue="'Search'" :classValue ="'command-input'"/>
-		<table class="command-table" v-if="this.commands.length !== 0" >
+	<div class="table">
+		<SearchBox
+			v-model="search_value"
+			:legendValue="'Search'"
+			:classValue="'command-input'"
+		/>
+		<table class="command-table" v-if="commandsExists">
 			<tr>
 				<th class="clickable" @click="orderByKey('name')">Name</th>
 				<th class="clickable" @click="orderByKey('counter')">Counter</th>
@@ -12,7 +16,7 @@
 				<th>Params (req)</th>
 				<th>Params (opt)</th>
 			</tr>
-			<tr v-for="command of filteredCommands()" :key="command.name">
+			<tr v-for="command of filteredCommands" :key="command.name">
 				<td>{{ command.name.toLowerCase() }}</td>
 				<td class="centered">{{ command.count }}</td>
 				<td>{{ command.description }}</td>
@@ -56,12 +60,18 @@ export default {
 	},
 	methods: {
 		orderByKey(key) {
-			this.commands = orderBy(key, this.commands )
+			this.commands = orderBy(key, this.commands)
+		},
+	},
+
+	computed: {
+		commandsExists() {
+			return this.commands.values.length !== 0
 		},
 		filteredCommands() {
 			return filter(this.commands.values, this.search_value)
 		},
-	}
+	},
 }
 </script>
 
