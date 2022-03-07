@@ -6,8 +6,8 @@
 	/>
 	<div v-if="!this.loading" class="loaded-container">
 		<h1 v-if="this.errorMessage">{{ errorMessage }}</h1>
-		<item-list :items="getUserItems" />
-        <item-list :items="value" v-for="(value, name) in getStats" :key="name"/>
+		<info-card :title="'User info'" :data="getUserItems"/>
+		<info-card :data="value" :title="name" v-for="(value, name) in getStats" :key="name" />
 	</div>
 	<div v-else>
 		<h1>Loading</h1>
@@ -17,11 +17,12 @@
 <script>
 import SearchBox from '../components/commandtable/SearchBox.vue'
 import { getUserStats } from '../js-functions/gql/stats'
-import ItemList from '../components/infolist/InfoList.vue'
+import InfoCard from '../components/infocard/InfoCard.vue'
+
 export default {
 	components: {
 		SearchBox,
-		ItemList,
+		InfoCard
 	},
 	data() {
 		return {
@@ -47,6 +48,7 @@ export default {
 	computed: {
 		getStats() {
 			if (!this.data) return {}
+			console.log(this.data)
 			return this.data.stats
 		},
 		getUserItems() {
@@ -56,7 +58,7 @@ export default {
 			for (let [key, value] of Object.entries(this.data)) {
 				if (key !== 'stats') object[key] = value
 			}
-            
+
 			return object
 		},
 	},
