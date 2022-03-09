@@ -1,6 +1,9 @@
 <template>
 	<Navbar />
 	<router-view />
+	<div class="notification-wrapper">
+		<notifications position="center bottom" width="40%" />
+	</div>
 </template>
 
 <script>
