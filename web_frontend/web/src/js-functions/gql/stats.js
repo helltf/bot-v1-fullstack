@@ -1,27 +1,30 @@
 import { request, gql } from 'graphql-request'
 import { Resource } from '../class/Resource'
 
+const userFields = `id, username, color, permissions, register_time, display_name,`
+const colorHistoryFields = `last_change, history, register_time`
+const rpsFields = `draw, win, lose`
+const cookieFields = `amount, average, resets`
+
+const getQueryParams = (user) =>{
+    return isNaN(user) ? `username:"${user}"` : `twitch_id:"${Number(user)}"`
+}
+
 const getStatsQuery = (user) => {
+    const queryParams = getQueryParams(user)
 	return gql`
     query{
-        user(username:"${user}"){
-            id,
-            username,
-            color,
-            permissions,
-            register_time,
-            display_name,
+        user(${queryParams}){
+            ${userFields}
             stats{
                 color_history{
-                    last_change,
-                    history,
-                    register_time
+                    ${colorHistoryFields}
                 },
                 rps{
-                    draw, win, lose
+                    ${rpsFields}
                 },
                 cookie{
-                    amount, average, resets
+                    ${cookieFields}
                 },
                 ban{
                     amount
