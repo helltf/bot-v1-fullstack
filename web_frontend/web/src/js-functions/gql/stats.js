@@ -1,6 +1,5 @@
-import { request, gql } from 'graphql-request'
-import { Resource } from '../class/Resource'
-
+import { gql } from 'graphql-request'
+import {request} from './graphql-request'
 const userFields = `id, username, color, permissions, register_time, display_name,`
 const colorHistoryFields = `last_change, history, register_time`
 const rpsFields = `draw, win, lose`
@@ -42,12 +41,7 @@ const getStatsQuery = (user) => {
 const getUserStats = async (user) => {
 	const query = getStatsQuery(user)
 
-	try {
-		let res = await request(process.env.VUE_APP_GQL_URL, query)
-		return Resource.ok(res)
-	} catch (e) {
-		return Resource.error(e)
-	}
+    return request(process.env.VUE_APP_GQL_URL, query)
 }
 
 export { getUserStats }
