@@ -1,5 +1,5 @@
 <template>
-	<div class="table">
+	<div v-if="!this.error_message" class="table">
 		<SearchBox
 			v-model="search_value"
 			:legendValue="'Search'"
@@ -26,6 +26,9 @@
 			</tr>
 		</table>
 	</div>
+	<div v-else>
+		<h1>{{this.error_message}}</h1>
+	</div>
 </template>
 
 <script>
@@ -42,6 +45,7 @@ export default {
 	data() {
 		return {
 			search_value: '',
+			error_message:'',
 			commands: {
 				orderedBy: {
 					coloumn: undefined,
@@ -53,10 +57,15 @@ export default {
 	},
 	async mounted() {
 		let name = 'name'
-		this.commands.values = await getCommands()
-		this.commands.orderedBy.orderAsc = true
-		this.commands.orderedBy.coloumn = name
-		orderBy(name, this.commands)
+		const { data, error, success } = await getCommands()
+		if (success) {
+			this.commands.values = data.commands
+			this.commands.orderedBy.orderAsc = true
+			this.commands.orderedBy.coloumn = name
+			orderBy(name, this.commands)
+		}else{
+			this.error_message = error
+		}
 	},
 	methods: {
 		orderByKey(key) {
