@@ -38,6 +38,11 @@ export default {
 	},
 	methods: {
 		async fetchPlayerStats() {
+					this.$notify({
+						title:  'Stats could not be fetched',
+						type:'error',
+						duration: 15000
+					})
 			this.loading = true
 			let { success, data } = await getUserStats(this.searchValue)
 
@@ -46,6 +51,7 @@ export default {
 				this.data = data.user
 			} else {
 				this.errorMessage = 'Cannot fetch user for given input'
+				
 			}
 			this.loading = false
 		},
