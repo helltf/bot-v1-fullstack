@@ -1,4 +1,5 @@
-import { request, gql } from 'graphql-request'
+import {request} from '../gql/graphql-request'
+import {gql} from 'graphql-request'
 
 const getCommands = async () => {
     const query = gql`
@@ -13,8 +14,7 @@ const getCommands = async () => {
         }
     }
     `
-
-    return (await request(process.env.VUE_APP_GQL_URL, query)).commands
+    return request(process.env.VUE_APP_GQL_URL,  query)
 }
 
 
