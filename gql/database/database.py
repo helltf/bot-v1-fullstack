@@ -32,7 +32,9 @@ def execute_query_one(query: str, values=None):
     values = values if values is not None else []
     cursor = twitch_db.cursor(buffered=True)
     cursor.execute(query, values)
-    return cursor.fetchone()
+    result = cursor.fetchone()
+    cursor.close()
+    return result
 
 
 def get_one(tablename: str, filter: Dict[str, Any]):
