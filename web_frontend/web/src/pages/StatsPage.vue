@@ -36,6 +36,7 @@ export default {
 		async fetchPlayerStats() {
 			this.loading = true
 			let { success, data } = await getUserStats(this.searchValue)
+			
 			if (success) {
 				this.errorMessage = ''
 				this.data = data.user
@@ -48,7 +49,6 @@ export default {
 	computed: {
 		getStats() {
 			if (!this.data) return {}
-			console.log(this.data)
 			return this.data.stats
 		},
 		getUserItems() {
