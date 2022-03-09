@@ -4,13 +4,15 @@
 		:legendValue="'User'"
 		@keyup.enter="fetchPlayerStats()"
 	/>
-	<div v-if="!this.loading" class="loaded-container">
-		<h1 v-if="this.errorMessage">{{ errorMessage }}</h1>
+	<div v-if="!this.loading && !this.errorMessage" class="loaded-container">
 		<info-card :title="'User info'" :data="getUserItems"/>
 		<info-card :data="value" :title="name" v-for="(value, name) in getStats" :key="name" />
 	</div>
-	<div v-else>
-		<h1>Loading</h1>
+	<div v-else-if="this.loading" class="loading-container">
+		<spinner/>
+	</div>
+	<div v-else-if="this.errorMessage">
+			<h1 >{{ errorMessage }}</h1>
 	</div>
 </template>
 
@@ -18,11 +20,13 @@
 import SearchBox from '../components/commandtable/SearchBox.vue'
 import { getUserStats } from '../js-functions/gql/stats'
 import InfoCard from '../components/infocard/InfoCard.vue'
+import Spinner from '../components/spinner/Spinner.vue'
 
 export default {
 	components: {
 		SearchBox,
-		InfoCard
+		InfoCard,
+		Spinner
 	},
 	data() {
 		return {
@@ -36,7 +40,7 @@ export default {
 		async fetchPlayerStats() {
 			this.loading = true
 			let { success, data } = await getUserStats(this.searchValue)
-			
+
 			if (success) {
 				this.errorMessage = ''
 				this.data = data.user
