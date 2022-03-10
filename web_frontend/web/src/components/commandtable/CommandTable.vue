@@ -1,5 +1,5 @@
 <template>
-	<div v-if="!this.error_message" class="table">
+	<div class="table">
 		<SearchBox
 			v-model="search_value"
 			:legendValue="'Search'"
@@ -25,9 +25,6 @@
 				<td>{{ command.optional_parameters.join(' ') }}</td>
 			</tr>
 		</table>
-	</div>
-	<div v-else>
-		<h1>{{this.error_message}}</h1>
 	</div>
 </template>
 
