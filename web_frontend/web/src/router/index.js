@@ -18,6 +18,11 @@ const routes = [
 		component: LogoutPage,
 	},
 	{
+		path: '/:access_token',
+		name: 'HomeWithToken',
+		component: HomePage,
+	},	
+	{
 		path: '/',
 		name: 'Home',
 		component: HomePage,
@@ -33,9 +38,10 @@ const routes = [
 		component: CommandPage,
 	},
 	{
-		path: '/user-info',
+		path: '/user-info/',
 		name: 'User',
 		component: EmptyPage,
+		props: (route) => console.log( route),  
 	},
 	{
 		path: '/stats',
