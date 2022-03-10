@@ -10,7 +10,8 @@ const getQueryParams = (user) =>{
 }
 
 const getStatsQuery = (user) => {
-    const queryParams = getQueryParams(user)
+
+    const queryParams = getQueryParams(user.trim())
 	return gql`
     query{
         user(${queryParams}){
