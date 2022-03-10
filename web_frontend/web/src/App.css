@@ -8,3 +8,8 @@ body{
     --table-green: #009879;
     --default-radius: 0,2rem;
 }
+
+.vue-notification{
+    cursor: pointer;
+    font-size: 20pt;
+ }
