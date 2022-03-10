@@ -36,6 +36,7 @@ import { getCommands } from '../../js-functions/gql/commands'
 import { orderBy } from '../../js-functions/order'
 import { filter } from '../../js-functions/filter'
 import SearchBox from '../commandtable/SearchBox.vue'
+import {errorNotification} from '../../js-functions/notification'
 
 export default {
 	name: 'CommandTable',
@@ -45,7 +46,6 @@ export default {
 	data() {
 		return {
 			search_value: '',
-			error_message:'',
 			commands: {
 				orderedBy: {
 					coloumn: undefined,
@@ -64,7 +64,7 @@ export default {
 			this.commands.orderedBy.coloumn = name
 			orderBy(name, this.commands)
 		}else{
-			this.error_message = error
+			errorNotification({title:"Commands", text: error})
 		}
 	},
 	methods: {
