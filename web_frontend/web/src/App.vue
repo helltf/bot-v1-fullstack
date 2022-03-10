@@ -1,9 +1,12 @@
 <template>
 	<Navbar />
 	<router-view />
-	<div class="notification-wrapper">
-		<notifications position="center bottom" width="40%" />
-	</div>
+
+	<notifications
+		classes="vue-notification notification-bar"
+		position="center bottom"
+		width="50%"
+	/>
 </template>
 
 <script>
