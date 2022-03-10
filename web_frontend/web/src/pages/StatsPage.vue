@@ -5,14 +5,19 @@
 		@keyup.enter="fetchPlayerStats()"
 	/>
 	<div v-if="!this.loading && !this.errorMessage" class="loaded-container">
-		<info-card :title="'User info'" :data="getUserItems"/>
-		<info-card :data="value" :title="name" v-for="(value, name) in getStats" :key="name" />
+		<info-card :title="'User info'" :data="getUserItems" />
+		<info-card
+			:data="value"
+			:title="name"
+			v-for="(value, name) in getStats"
+			:key="name"
+		/>
 	</div>
 	<div v-else-if="this.loading" class="loading-container">
-		<spinner/>
+		<spinner />
 	</div>
 	<div v-else-if="this.errorMessage">
-			<h1 >{{ errorMessage }}</h1>
+		<h1>{{ errorMessage }}</h1>
 	</div>
 </template>
 
@@ -21,12 +26,13 @@ import SearchBox from '../components/commandtable/SearchBox.vue'
 import { getUserStats } from '../js-functions/gql/stats'
 import InfoCard from '../components/infocard/InfoCard.vue'
 import Spinner from '../components/spinner/Spinner.vue'
+import { errorNotification } from '../js-functions/notification'
 
 export default {
 	components: {
 		SearchBox,
 		InfoCard,
-		Spinner
+		Spinner,
 	},
 	data() {
 		return {
@@ -38,11 +44,6 @@ export default {
 	},
 	methods: {
 		async fetchPlayerStats() {
-					this.$notify({
-						title:  'Stats could not be fetched',
-						type:'error',
-						duration: 15000
-					})
 			this.loading = true
 			let { success, data } = await getUserStats(this.searchValue)
 
@@ -50,8 +51,10 @@ export default {
 				this.errorMessage = ''
 				this.data = data.user
 			} else {
-				this.errorMessage = 'Cannot fetch user for given input'
-				
+				errorNotification({
+					title: 'Stats',
+					text: `No data found for user "${this.searchValue}"`,
+				})
 			}
 			this.loading = false
 		},
