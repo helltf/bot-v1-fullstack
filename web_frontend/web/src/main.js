@@ -1,19 +1,22 @@
-import {createApp, h} from "vue"
-import App  from "./App.vue"
-import router from './router' 
-import { globalCookiesConfig } from "vue3-cookies";
+import { createApp, h } from 'vue'
+import App from './App.vue'
+import router from './router'
+import { globalCookiesConfig } from 'vue3-cookies'
 import Notifications from '@kyvg/vue3-notification'
 
 globalCookiesConfig({
-    expireTimes: "30d",
-    path: "/",
-    domain: "",
-    secure: true,
-    sameSite: "None",
-  });
-  
+	expireTimes: '30d',
+	path: '/',
+	domain: '',
+	secure: true,
+	sameSite: 'None',
+})
+
 const app = createApp({
-    render: () => h(App)
-}).use(router).use(Notifications)
+	render: () => h(App),
+})
+	.use(router)
+	.use(Notifications)
+	.provide('access_token', undefined)
 
 app.mount('#app')
