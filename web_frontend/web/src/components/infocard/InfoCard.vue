@@ -16,10 +16,7 @@ export default {
 	},
 	components: {
 		InfoList,
-	},
-	mounted() {
-		console.log(this.data)
-	},
+	}
 }
 </script>
 
