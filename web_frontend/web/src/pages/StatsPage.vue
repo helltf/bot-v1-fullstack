@@ -4,40 +4,30 @@
 		:legendValue="'User'"
 		@keyup.enter="fetchPlayerStats()"
 	/>
-	<div v-if="!this.loading && !this.errorMessage" class="loaded-container">
-		<info-card :title="'User info'" :data="getUserItems" />
-		<info-card
-			:data="value"
-			:title="name"
-			v-for="(value, name) in getStats"
-			:key="name"
-		/>
+	<div v-if="!this.loading"  class="loaded-container">
+		<stats-list :stats="getStats" :userInfo="getUserInfo"/>
 	</div>
-	<div v-else-if="this.loading" class="loading-container">
+	<div v-else class="loading-container">
 		<spinner />
-	</div>
-	<div v-else-if="this.errorMessage">
-		<h1>{{ errorMessage }}</h1>
 	</div>
 </template>
 
 <script>
 import SearchBox from '../components/commandtable/SearchBox.vue'
 import { getUserStats } from '../js-functions/gql/stats'
-import InfoCard from '../components/infocard/InfoCard.vue'
 import Spinner from '../components/spinner/Spinner.vue'
+import StatsList from '../components/statslist/StatsList.vue'
 import { errorNotification } from '../js-functions/notification'
 
 export default {
 	components: {
 		SearchBox,
-		InfoCard,
 		Spinner,
+		StatsList
 	},
 	data() {
 		return {
 			searchValue: '',
-			errorMessage: '',
 			data: null,
 			loading: false,
 		}
@@ -46,9 +36,7 @@ export default {
 		async fetchPlayerStats() {
 			this.loading = true
 			let { success, data } = await getUserStats(this.searchValue)
-
 			if (success) {
-				this.errorMessage = ''
 				this.data = data.user
 			} else {
 				errorNotification({
@@ -64,7 +52,7 @@ export default {
 			if (!this.data) return {}
 			return this.data.stats
 		},
-		getUserItems() {
+		getUserInfo() {
 			let object = {}
 			if (this.data === null) return object
 
