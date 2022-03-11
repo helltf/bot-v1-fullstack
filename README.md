@@ -1,0 +1,1 @@
+# Fullstack application for twich bot
