@@ -17,6 +17,6 @@ const app = createApp({
 })
 	.use(router)
 	.use(Notifications)
-	.provide('access_token', undefined)
+	.provide('access_token', {token:undefined})
 
 app.mount('#app')

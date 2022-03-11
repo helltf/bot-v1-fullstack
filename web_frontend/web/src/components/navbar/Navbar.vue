@@ -49,8 +49,8 @@ export default {
 	},
 	async mounted() {
 		this.setUser(cookies.get(SIGNED_IN))
-		this.access_token = getUserAccessToken(document.location.hash)
-		this.setUser(await getUsername(this.access_token))
+		this.access_token.token = getUserAccessToken(document.location.hash)
+		this.setUser(await getUsername(this.access_token.token))
 	},
 	methods: {
 		async logout() {
