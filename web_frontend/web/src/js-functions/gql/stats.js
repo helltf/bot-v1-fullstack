@@ -1,5 +1,6 @@
 import { gql } from 'graphql-request'
 import {request} from './graphql-request'
+
 const userFields = `id, username, color, permissions, register_time, display_name,`
 const colorHistoryFields = `last_change, history, register_time`
 const rpsFields = `draw, win, lose`
