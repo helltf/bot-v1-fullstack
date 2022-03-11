@@ -1,1 +1,1 @@
-# Fullstack application for twich bot
+# Fullstack application for twitch bot
