@@ -13,5 +13,4 @@ export default {
 }
 </script>
 <style>
-   @import './LoginPage.css';
 </style>
