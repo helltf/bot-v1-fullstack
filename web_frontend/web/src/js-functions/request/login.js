@@ -1,10 +1,11 @@
-
+import { Resource } from "../class/Resource"
+import {errorNotification} from '../notification'
 const TOKEN = "token"
 const SIGNED_IN = "signed_in"
 
 const postData = async (path, body) => {
 	try {
-		return await (
+		return Resource.ok(await (
 			await fetch(`${process.env.VUE_APP_BACKEND_URL}${path}`, {
 				method: 'post',
 				headers: {
@@ -12,23 +13,29 @@ const postData = async (path, body) => {
 				},
 				body: JSON.stringify(body),
 			})
-		).json()
+		).json())
 	} catch {
-		alert('Error reaching backend')
+		return Resource.error('Error reaching backend')
 	}
 }
 
  const checkToken = async (cookies) => {
      let token = cookies.get(TOKEN)
      let signed_in = cookies.get(SIGNED_IN)
-     let {success} =  await postData('/token', { token,  signed_in})
 
-     if(!success){
+     let {data, success, error} =  await postData('/token', { token,  signed_in})
+
+	if(!success){
+		errorNotification('Login', error)
+		return false
+	}
+
+     if(!data.login_valid){
 			cookies.remove(TOKEN)
 			cookies.remove(SIGNED_IN)
      }
 
-	return success
+	return data.login_valid
 }
 
 const postLogin = async (username, password) => {
