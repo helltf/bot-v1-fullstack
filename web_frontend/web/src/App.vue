@@ -33,8 +33,8 @@ export default {
 		if (!this.user) {
 			router.push('/login')
 		} else {
-			let success = await checkToken(cookies)
-			if (!success) {
+			let login_valid = await checkToken(cookies)
+			if (!login_valid) {
 				this.user = null
 			}
 		}
