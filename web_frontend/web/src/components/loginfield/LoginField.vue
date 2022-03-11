@@ -47,7 +47,7 @@ const { cookies } = useCookies()
 export default {
 	name: 'LoginField',
 	async mounted() {
-		if(this.current_user !== null){
+		if (this.current_user !== null) {
 			router.push('/')
 		}
 	},
@@ -56,32 +56,37 @@ export default {
 			username: '',
 			password: '',
 			loading: false,
-			errormessage:null
 		}
 	},
-	setup(){
+	setup() {
 		return {
 			current_user: inject('user'),
-			setUser: inject('setUser')
+			setUser: inject('setUser'),
 		}
 	},
 	methods: {
-		async submit (username, password){
-			let { success, token, username:user_login, error} = await postLogin(username, password)
+		async submit(username, password) {
+			let {
+				success,
+				token,
+				username: user_login,
+			} = await postLogin(username, password)
 			if (success) {
 				cookies.set(TOKEN, token, '24h')
 				cookies.set(SIGNED_IN, user_login, '24h')
 				this.current_user = user_login
 				router.push('/')
-			}else{
-				this.errormessage = error
-				this.password =""
+			} else {
+				this.password = ''
 			}
 		},
 	},
+	computed:{
+		getTwitchLoginUrl(){
+			return process.env.VUE_APP_TWITCH_LOGIN
+		}
+	}
 }
-
-
 </script>
 <style>
 @import './LoginField.css';
