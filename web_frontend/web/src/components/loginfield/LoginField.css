@@ -1,95 +1,97 @@
-
-.form-wrapper{
-    margin-left: 200px;
-    margin-right: 250px;
+.form-wrapper {
+	margin-left: 200px;
+	margin-right: 250px;
 }
 
-.top-container{
-    margin-top: 150px;
+.top-container {
+	margin-top: 150px;
 }
 
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-@media (min-width: 992px){
-    .container {
-        width: 970px;
-    }
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
 }
 
-@media (min-width: 1200px){
-    .container {
-        width: 1000px !important;
-    }
-}
-.error-msg{
-    color: red;
-    margin-left: 5px;
-    font-size: 15pt;
+@media (min-width: 1200px) {
+	.container {
+		width: 1000px !important;
+	}
 }
 
-.submit-btn{
-    color: #fff;
-    background-color: #d2691e;
-    padding: 7px;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 4px;
-    font-size: 20px;
+.submit-btn {
+	color: #fff;
+	background-color: #f59551;
+	padding: 7px;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 4px;
+	font-size: 20px;
 }
-.submit-btn:hover{
-    background-color: #f59551;
-    cursor: pointer;
-}
-
-.login-form fieldset legend{
-    font-size: 20pt;
+.submit-btn:hover {
+    background-color:#d2691e;
+	cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.login-form fieldset{
-    box-shadow:  10px 10px 8px #888888;
+.login-form fieldset legend {
+	font-size: 20pt;
 }
 
-.inner-login{
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.login-form fieldset {
+	box-shadow: 10px 10px 8px #888888;
 }
 
-html, body {
-    height:100%;
+.inner-login {
+	margin: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
-.login-fieldset{
-    border: 2px solid;
-    border-color: var(--table-green);
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+.login-fieldset {
+	border: 2px solid;
+	border-color: var(--table-green);
+	border-radius: 5px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.login-form> fieldset input{
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 400px;
+.login-form > fieldset input {
+	padding: 10px;
+	margin-bottom: 20px;
 }
-.inner-login>input:focus{
-    resize: none;
-    outline: none;
+
+.inner-login > input:focus {
+	resize: none;
+	outline: none;
 }
+
 form {
-    display: block;
-    margin-top: 0em;
+	display: block;
+	margin-top: 0em;
 }
 
-.login-form{
-    display: grid;
-    margin: auto;
-    margin-bottom: 10px;
+.login-form {
+	display: grid;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.login-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-username, .input-password{
+    width: 90%;
 }
