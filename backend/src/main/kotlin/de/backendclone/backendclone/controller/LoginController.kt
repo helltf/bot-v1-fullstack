@@ -13,7 +13,7 @@ class LoginController: LoginInterface{
          val username = body.get("username").asText()
          val password = body.get("password").asText()
 
-         val isValidLogin = username == validUser && password == ""
+         val isValidLogin = username == validUser && password == "helltf"
          val loginData = LoginDTO(isValidLogin, validToken, username)
 
          return ResponseEntity.ok(loginData)
