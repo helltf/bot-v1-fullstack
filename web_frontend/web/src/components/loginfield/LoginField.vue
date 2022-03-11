@@ -25,10 +25,10 @@
 								<button class="submit-btn" @click="submit(username, password)">
 									Log in
 								</button>
-							</div>
-							<a class="submit-btn" v-bind:href="getTwitchLoginUrl">
+															<a class="submit-btn" v-bind:href="getTwitchLoginUrl">
 								Twich Login
 							</a>
+							</div>
 						</div>
 					</fieldset>
 				</form>
