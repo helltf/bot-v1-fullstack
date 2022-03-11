@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import { useCookies } from 'vue3-cookies'
-const { cookies } = useCookies()
 import Navbar from './components/navbar/Navbar.vue'
 import router from './router'
-import { checkToken } from './js-functions/request/login'
+import { checkAccessToken } from './js-functions/request/twitch-login'
 import { provide, ref } from '@vue/runtime-core'
+import { useCookies } from 'vue3-cookies'
+const { cookies } = useCookies()
 
 export default {
 	name: 'App',
@@ -23,20 +23,19 @@ export default {
 		Navbar,
 	},
 	setup() {
-		const current_user = ref(null)
+		const current_user = ref(undefined)
 		provide('user', current_user)
 		provide('setUser', (user) => {
 			current_user.value = user
 		})
 	},
 	async mounted() {
-		if (!this.user) {
-			router.push('/login')
+		let access_token = cookies.get('twitch_sign_in')
+		if (!access_token) {
+			checkAccessToken(access_token)
 		} else {
-			let login_valid = await checkToken(cookies)
-			if (!login_valid) {
-				this.user = null
-			}
+
+			router.push('/login')
 		}
 	},
 }
