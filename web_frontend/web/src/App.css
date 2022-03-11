@@ -13,3 +13,8 @@ body{
     cursor: pointer;
     font-size: 20pt;
  }
+
+ html,
+body {
+	height: 100%;
+}
