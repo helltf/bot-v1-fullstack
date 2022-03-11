@@ -24,6 +24,6 @@ class LoginController: LoginInterface{
         val user = body.get("signed_in").asText()
         
         val valid = token == validToken && user == validUser
-        return ResponseEntity.ok(mapOf("success" to valid))
+        return ResponseEntity.ok(mapOf("login_valid" to valid))
     }
 }
