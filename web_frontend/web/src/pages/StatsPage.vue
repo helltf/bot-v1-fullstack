@@ -4,8 +4,8 @@
 		:legendValue="'User'"
 		@keyup.enter="fetchPlayerStats()"
 	/>
-	<div v-if="!this.loading"  class="loaded-container">
-		<stats-list :stats="getStats" :userInfo="getUserInfo"/>
+	<div v-if="!this.loading" class="loaded-container">
+		<stats-list :stats="getStats" :userInfo="getUserInfo" />
 	</div>
 	<div v-else class="loading-container">
 		<spinner />
@@ -23,7 +23,7 @@ export default {
 	components: {
 		SearchBox,
 		Spinner,
-		StatsList
+		StatsList,
 	},
 	data() {
 		return {
@@ -53,12 +53,13 @@ export default {
 			return this.data.stats
 		},
 		getUserInfo() {
-			let object = {}
-			if (this.data === null) return object
+			if (this.data === null) return {}
 
-			for (let [key, value] of Object.entries(this.data)) {
-				if (key !== 'stats') object[key] = value
+			let object = {
+				...this.data
 			}
+			
+			delete object.stats
 
 			return object
 		},
