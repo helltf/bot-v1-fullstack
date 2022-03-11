@@ -41,7 +41,6 @@ const routes = [
 		path: '/user-info/',
 		name: 'User',
 		component: EmptyPage,
-		props: (route) => console.log( route),  
 	},
 	{
 		path: '/stats',
