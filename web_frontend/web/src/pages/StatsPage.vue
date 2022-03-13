@@ -2,13 +2,13 @@
 	<search-box
 		v-model="searchValue"
 		:legendValue="'User'"
-		@keyup.enter="fetchPlayerStats()"
+		@keyup.enter="setUserInput()"
 	/>
-	<div v-if="!this.loading" class="loaded-container">
-		<stats-list :stats="getStats" :userInfo="getUserInfo" />
-	</div>
-	<div v-else class="loading-container">
+	<div v-if="this.loading" class="loading-container">
 		<spinner />
+	</div>
+	<div v-else-if="!this.loading && this.setUser" class="loaded-container">
+		<stats-list :stats="getStats" :userInfo="getUserInfo" />
 	</div>
 </template>
 
@@ -30,9 +30,15 @@ export default {
 			searchValue: '',
 			data: null,
 			loading: false,
+			setUser: undefined,
 		}
 	},
 	methods: {
+		setUserInput() {
+			this.setUser = this.searchValue
+			this.fetchPlayerStats()
+		},
+		
 		async fetchPlayerStats() {
 			this.loading = true
 			let { success, data } = await getUserStats(this.searchValue)
@@ -56,9 +62,9 @@ export default {
 			if (this.data === null) return {}
 
 			let object = {
-				...this.data
+				...this.data,
 			}
-			
+
 			delete object.stats
 
 			return object
