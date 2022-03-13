@@ -38,28 +38,15 @@
 </template>
 
 <script>
-import router from '../../router'
 import { postLogin } from '../../js-functions/request/login'
-import { inject } from '@vue/runtime-core'
 
 export default {
 	name: 'LoginField',
-	async mounted() {
-		if (this.current_user !== null) {
-			router.push('/')
-		}
-	},
 	data() {
 		return {
 			username: '',
 			password: '',
 			loading: false,
-		}
-	},
-	setup() {
-		return {
-			current_user: inject('user'),
-			setUser: inject('setUser'),
 		}
 	},
 	methods: {
