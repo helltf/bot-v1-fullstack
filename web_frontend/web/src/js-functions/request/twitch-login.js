@@ -21,6 +21,7 @@ function getAccessTokenFromInput(input) {
 
 async function getUsername(access_token) {
 	if (!access_token) return undefined
+	
 	const { data, success, error } = await validateToken(access_token)
 	if (success) {
 		return data.login
