@@ -4,6 +4,7 @@ import router from './router'
 import { globalCookiesConfig } from 'vue3-cookies'
 import Notifications from '@kyvg/vue3-notification'
 
+
 globalCookiesConfig({
 	expireTimes: '30d',
 	path: '/',
@@ -17,6 +18,6 @@ const app = createApp({
 })
 	.use(router)
 	.use(Notifications)
-	.provide('access_token', {token:undefined})
+	.provide('access_token', {token: undefined})
 
 app.mount('#app')
