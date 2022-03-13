@@ -14,16 +14,14 @@
 				<router-link
 					class="link"
 					to="/user-info"
-					v-if="this.current_user !== null"
+					v-if="this.current_user !== undefined"
 					>{{ this.current_user }}</router-link
 				>
-				<router-link class="link" to="/logout" v-if="this.current_user !== null"
+				<router-link class="link" to="/logout" v-if="this.current_user"
 					>Logout</router-link
 				>
 
-				<router-link class="link" to="/login" v-if="this.current_user === null"
-					>Login</router-link
-				>
+				<router-link v-else class="link" to="/login">Login</router-link>
 			</div>
 		</div>
 	</div>
@@ -36,8 +34,6 @@ import {
 	getUserAccessToken,
 	getUsername,
 } from '../../js-functions/request/twitch-login'
-import { useCookies } from "vue3-cookies"
-const {cookies} = useCookies()
 
 export default {
 	name: 'Navbar',
@@ -50,9 +46,9 @@ export default {
 	},
 	async mounted() {
 		this.access_token.token = getUserAccessToken(document.location.hash)
+
 		if (this.access_token.token) {
 			const current_user = await getUsername(this.access_token.token)
-			cookies.set('twitch_sign_in', this.access_token.token, '1d')
 			this.setUser(current_user)
 		}
 	},
