@@ -21,7 +21,12 @@ const routes = [
 		path: '/:access_token',
 		name: 'HomeWithToken',
 		component: HomePage,
-	},	
+		redirect: () => {
+			return {
+				name: 'Home',
+			}
+		},
+	},
 	{
 		path: '/',
 		name: 'Home',

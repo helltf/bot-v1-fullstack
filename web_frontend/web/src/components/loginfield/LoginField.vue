@@ -25,9 +25,9 @@
 								<button class="submit-btn" @click="submit(username, password)">
 									Log in
 								</button>
-															<a class="submit-btn" v-bind:href="getTwitchLoginUrl">
-								Twich Login
-							</a>
+								<a class="submit-btn" v-bind:href="getTwitchLoginUrl">
+									Twich Login
+								</a>
 							</div>
 						</div>
 					</fieldset>
@@ -38,19 +38,10 @@
 </template>
 
 <script>
-import router from '../../router'
-import { postLogin, TOKEN, SIGNED_IN } from '../../js-functions/request/login'
-import { inject } from '@vue/runtime-core'
-import { useCookies } from 'vue3-cookies'
-const { cookies } = useCookies()
+import { postLogin } from '../../js-functions/request/login'
 
 export default {
 	name: 'LoginField',
-	async mounted() {
-		if (this.current_user !== null) {
-			router.push('/')
-		}
-	},
 	data() {
 		return {
 			username: '',
@@ -58,34 +49,16 @@ export default {
 			loading: false,
 		}
 	},
-	setup() {
-		return {
-			current_user: inject('user'),
-			setUser: inject('setUser'),
-		}
-	},
 	methods: {
 		async submit(username, password) {
-			let {
-				success,
-				token,
-				username: user_login,
-			} = await postLogin(username, password)
-			if (success) {
-				cookies.set(TOKEN, token, '24h')
-				cookies.set(SIGNED_IN, user_login, '24h')
-				this.current_user = user_login
-				router.push('/')
-			} else {
-				this.password = ''
-			}
+			await postLogin(username, password)
 		},
 	},
-	computed:{
-		getTwitchLoginUrl(){
+	computed: {
+		getTwitchLoginUrl() {
 			return process.env.VUE_APP_TWITCH_LOGIN
-		}
-	}
+		},
+	},
 }
 </script>
 <style>

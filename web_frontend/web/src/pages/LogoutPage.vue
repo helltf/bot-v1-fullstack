@@ -17,9 +17,9 @@ export default {
 	},
 	mounted() {
         deleteCookies()
-		this.setUser(null)
+		this.setUser(undefined)
         router.push('/')
-	},
+	}
 }
 </script>
 
