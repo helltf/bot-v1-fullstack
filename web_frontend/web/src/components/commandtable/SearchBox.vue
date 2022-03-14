@@ -2,7 +2,7 @@
 	<div v-bind:class="classValue">
 		<fieldset class="search-fieldset">
 			<legend class="search-legend">{{legendValue}}</legend>
-			<form class="search-form">
+			<form class="search-form" type="submit" @submit="(e)=> e.preventDefault()">
 				<input
 					class="search-input"
 					id="search"
