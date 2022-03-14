@@ -19,24 +19,46 @@ export default {
 	data() {
 		return {
 			data: undefined,
+            oldUser: '',
+            loading = false
 		}
 	},
 	props: {
 		title: String,
 		field: String,
-		user: String,
+		newUser: String,
 	},
-	async mounted() {
-		let { data, success } =
-			this.field === 'user_info'
-				? await fetchUserInfo(this.user)
-				: await fetchStatsField(this.user, this.field)
-		if (success) {
-			this.data = data.user
-		} else {
-			errorNotification({ title: 'Stats Card', text: 'Not Found' })
-		}
+
+	methods: {
+		async updateStats() {
+            this.loading = true
+			let { data, success } =
+				this.field === 'user_info'
+					? await fetchUserInfo(this.newUser)
+					: await fetchStatsField(this.newUser, this.field)
+			if (success) {
+				this.data = data.user
+			} else {
+				this.data = undefined
+				if (this.field === 'user_info') {
+					errorNotification({
+						title: 'Stats Card',
+						text: `No stats found for input ${this.newUser}`,
+					})
+				}
+			}
+            this.loading = false
+		},
 	},
+    async mounted(){
+        await this.updateStats()
+        this.oldUser === this.newUser
+    },
+    updated(){
+        if (this.oldUser !== this.newUser){
+            this.updateStats()
+        }
+    }
 }
 </script>
 
