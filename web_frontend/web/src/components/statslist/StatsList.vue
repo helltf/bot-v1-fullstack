@@ -3,11 +3,11 @@
 		<spinner />
 	</div>
 	<div v-else>
-		<stats-card
+		<!-- <stats-card
 			:field="'user_info'"
 			:title="'User info'"
 			:newUser="this.userInput"
-		/>
+		/> -->
 		<stats-card
 			:title="title"
 			:field="field"
@@ -24,10 +24,10 @@ import Spinner from '../spinner/Spinner.vue'
 
 const statsFields = new Map([
 	['Recent Colors', 'color_history'],
-	['Cookie stats', 'cookie'],
-	['Rps games', 'rps'],
-	['Recieved timeouts', 'timeout'],
-	['Recieved bans', 'ban'],
+	// ['Cookie stats', 'cookie'],
+	// ['Rps games', 'rps'],
+	// ['Recieved timeouts', 'timeout'],
+	// ['Recieved bans', 'ban'],
 ])
 
 export default {
