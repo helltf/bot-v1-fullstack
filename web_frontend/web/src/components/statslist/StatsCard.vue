@@ -20,7 +20,6 @@ export default {
 		return {
 			data: undefined,
             oldUser: '',
-            loading = false
 		}
 	},
 	props: {
@@ -31,7 +30,6 @@ export default {
 
 	methods: {
 		async updateStats() {
-            this.loading = true
 			let { data, success } =
 				this.field === 'user_info'
 					? await fetchUserInfo(this.newUser)
@@ -47,7 +45,6 @@ export default {
 					})
 				}
 			}
-            this.loading = false
 		},
 	},
     async mounted(){
