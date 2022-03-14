@@ -15,9 +15,9 @@
 <script>
 import SearchBox from '../components/commandtable/SearchBox.vue'
 import { getUserStats } from '../js-functions/gql/stats'
-import Spinner from '../components/spinner/Spinner.vue'
 import StatsList from '../components/statslist/StatsList.vue'
 import { errorNotification } from '../js-functions/notification'
+import Spinner from '../components/spinner/Spinner.vue'
 
 export default {
 	components: {
@@ -30,7 +30,7 @@ export default {
 			searchValue: '',
 			data: null,
 			loading: false,
-			setUser: undefined,
+			setUser: '',
 		}
 	},
 	methods: {
