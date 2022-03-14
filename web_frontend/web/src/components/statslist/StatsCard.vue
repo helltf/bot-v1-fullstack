@@ -35,8 +35,7 @@ export default {
 					: await fetchStatsField(this.newUser, this.field)
 
 			if (success) {
-				this.data = handleValue(data)
-			} else {
+				this.data = handleValue(data, this.field)
 				if (this.field === 'user_info') {
 					errorNotification({
 						title: 'Stats Card',
@@ -58,8 +57,8 @@ export default {
 	},
 }
 
-function handleValue(data) {
-	return data?.stats === undefined ? data.user : data.user.stats
+function handleValue(data, field) {
+	return data?.stats === undefined ? data.user : data.user.stats[field]
 }
 
 </script>
