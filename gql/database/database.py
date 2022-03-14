@@ -20,20 +20,24 @@ twitch_db = connect_db()
 
 
 def execute_query_all(query: str, values=None):
+    new_con = connect_db()
     values = values if values is not None else []
-    cursor = twitch_db.cursor()
+    cursor = new_con.cursor(buffered=True)
     cursor.execute(query, values)
     result = cursor.fetchall()
     cursor.close()
+    new_con.close()
     return result
 
 
 def execute_query_one(query: str, values=None):
+    new_con = connect_db()
     values = values if values is not None else []
-    cursor = twitch_db.cursor(buffered=True)
+    cursor = new_con.cursor(buffered=True)
     cursor.execute(query, values)
     result = cursor.fetchone()
     cursor.close()
+    new_con.close()
     return result
 
 
