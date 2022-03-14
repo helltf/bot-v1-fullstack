@@ -42,18 +42,10 @@ export default {
 	},
 	data() {
 		return {
-			userInfo: {},
 			loading: false,
 			statsFields: statsFields,
 		}
-	},
-	async mounted() {
-		this.loading = true
-		let { data } = await fetchUserInfo(this.userInput)
-		this.userInfo = data
-
-		this.loading = false
-	},
+	}
 }
 </script>
 
