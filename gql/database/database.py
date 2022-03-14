@@ -3,6 +3,8 @@ from typing import Dict, Any
 from mysql import connector as db
 import os
 from dotenv import load_dotenv
+from mysql.connector import CMySQLConnection
+from mysql.connector.cursor_cext import CMySQLCursor
 
 load_dotenv()
 
@@ -20,25 +22,33 @@ twitch_db = connect_db()
 
 
 def execute_query_all(query: str, values=None):
-    new_con = connect_db()
-    values = values if values is not None else []
-    cursor = new_con.cursor(buffered=True)
-    cursor.execute(query, values)
+    cursor, connection = get_cursor(query, values)
+
     result = cursor.fetchall()
-    cursor.close()
-    new_con.close()
+    close_cursor_and_conn(cursor, connection)
     return result
 
 
 def execute_query_one(query: str, values=None):
-    new_con = connect_db()
-    values = values if values is not None else []
-    cursor = new_con.cursor(buffered=True)
-    cursor.execute(query, values)
+    cursor, connection = get_cursor(query, values)
+
     result = cursor.fetchone()
-    cursor.close()
-    new_con.close()
+    close_cursor_and_conn(cursor, connection)
     return result
+
+
+def get_cursor(query: str, values=None):
+    connection = connect_db()
+    values = values if values is not None else []
+
+    cursor = connection.cursor(buffered=True)
+    cursor.execute(query, values)
+    return cursor, connection
+
+
+def close_cursor_and_conn(cursor: CMySQLCursor, connection: CMySQLConnection):
+    cursor.close()
+    connection.close()
 
 
 def get_one(tablename: str, filter: Dict[str, Any]):
