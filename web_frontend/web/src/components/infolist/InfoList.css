@@ -1,0 +1,29 @@
+
+.stats-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: space-around;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.stats-card{
+    border: 3px solid var(--table-green);
+    border-radius: 4px;
+    margin: 20px 40px;
+    background-color: lightgray;
+    padding: 5px;
+}
+
+.stats-card-title{
+    text-align: center;
+}
+
+.info-list{
+    list-style-type: none;
+}
+
+.list-empty{
+    font-weight: bold;
+    color: crimson;
+}
