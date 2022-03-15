@@ -1,0 +1,22 @@
+.stats-card{
+    border: 4px solid var(--table-green);
+    border-radius: 4px;
+    margin: 20px 40px;
+    background-color: lightgray;
+    box-shadow: 1px 1px #6a6a6a;
+    min-height: 250px;
+}
+
+.stats-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: space-around;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+
+.stats-card-top{
+    padding: 5px;
+    border-bottom: 2px solid black;
+}
