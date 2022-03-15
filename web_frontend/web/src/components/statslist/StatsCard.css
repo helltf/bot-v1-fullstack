@@ -5,6 +5,7 @@
     background-color: lightgray;
     box-shadow: 1px 1px #6a6a6a;
     min-height: 250px;
+    min-width: 250px;
 }
 
 .stats-list{
@@ -13,10 +14,18 @@
     gap: 10px;
     justify-content: space-around;
     grid-auto-rows: minmax(100px, auto);
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
 
 .stats-card-top{
     padding: 5px;
     border-bottom: 2px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.stats-card-title{
+    font-size: 20pt;
 }
