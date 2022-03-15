@@ -1,11 +1,14 @@
 <template>
-	<div class="list-content">
+	<div class="list-content" v-if="this.items">
 		<ul class="info-list" v-for="(value, name) in this.items" :key="name">
-			<li>{{ value }} {{ name }}</li>
+			<li>
+				<span class="info-name" >{{ name }}</span>
+				<span class="info-value" >{{ value }}</span>
+			</li>
 		</ul>
 	</div>
-	<div class="list-no-content" v-if="!this.items">
-		<span class="list-empty" >No Record found</span>
+	<div v-else class="list-empty-container">
+		<span class="list-empty">No Record found</span>
 	</div>
 </template>
 
@@ -13,7 +16,7 @@
 export default {
 	props: {
 		items: Object,
-	}
+	},
 }
 </script>
 
