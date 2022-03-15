@@ -49,6 +49,11 @@ const routes = [
 	},
 	{
 		path: '/stats',
+		name: 'EmptyStats',
+		component: StatsPage,
+	},
+	{
+		path: '/stats/:user',
 		name: 'Stats',
 		component: StatsPage,
 	},
