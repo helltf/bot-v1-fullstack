@@ -36,6 +36,7 @@ export default {
 
 			if (success) {
 				this.data = handleValue(data, this.field)
+			}else{
 				if (this.field === 'user_info') {
 					errorNotification({
 						title: 'Stats Card',
