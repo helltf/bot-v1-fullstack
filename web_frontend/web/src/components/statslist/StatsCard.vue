@@ -58,7 +58,7 @@ export default {
 }
 
 function handleValue(data, field) {
-	return data?.stats === undefined ? data.user : data.user.stats[field]
+	return data.user?.stats === undefined ? data.user : data.user.stats[field]
 }
 
 </script>
