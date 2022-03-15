@@ -74,4 +74,6 @@ function handleValue(data, field) {
 }
 </script>
 
-<style></style>
+<style>
+	@import './StatsCard.css'
+</style>

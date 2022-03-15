@@ -39,8 +39,10 @@ export default {
 			loading: false,
 			statsFields: statsFields,
 		}
-	}
+	},
 }
 </script>
 
-<style></style>
+<style>
+	@import './StatsList.css';
+</style>
