@@ -1,7 +1,10 @@
 <template>
-	<div v-if="this.data !== undefined">
-		<h1>{{ this.title }}</h1>
-		<info-list :items="this.data" />
+	<div class="stats-card" v-if="this.user !== undefined">
+		<h1 class="stats-card-title">{{ this.title }}</h1>
+		<info-list v-if="!this.loading" :items="this.data" />
+		<div v-else>
+			<spinner />
+		</div>
 	</div>
 </template>
 
@@ -9,49 +12,54 @@
 import { fetchUserInfo, fetchStatsField } from '../../js-functions/gql/stats'
 import InfoList from '../../components/infolist/InfoList.vue'
 import { errorNotification } from '../../js-functions/notification'
+import Spinner from '../spinner/Spinner.vue'
 
 export default {
 	name: 'StatsCard',
 	components: {
 		InfoList,
+		Spinner,
 	},
 	data() {
 		return {
 			data: undefined,
 			oldUser: '',
+			loading: false,
 		}
 	},
 	props: {
 		title: String,
 		field: String,
-		newUser: String,
+		user: String,
 	},
 
 	methods: {
 		async updateStats() {
+			this.loading = true
 			let { data, success } =
 				this.field === 'user_info'
-					? await fetchUserInfo(this.newUser)
-					: await fetchStatsField(this.newUser, this.field)
+					? await fetchUserInfo(this.user)
+					: await fetchStatsField(this.user, this.field)
 
 			if (success) {
 				this.data = handleValue(data, this.field)
-			}else{
+			} else {
 				if (this.field === 'user_info') {
 					errorNotification({
 						title: 'Stats Card',
-						text: `No stats found for input ${this.newUser}`,
+						text: `No stats found for input ${this.user}`,
 					})
 				}
 			}
-			this.oldUser = this.newUser
+			this.oldUser = this.user
+			this.loading = false
 		},
 	},
 	async mounted() {
 		await this.updateStats()
 	},
 	updated() {
-		if (this.oldUser !== this.newUser) {
+		if (this.oldUser !== this.user) {
 			this.data = undefined
 			this.updateStats()
 		}
@@ -61,7 +69,6 @@ export default {
 function handleValue(data, field) {
 	return data.user?.stats === undefined ? data.user : data.user.stats[field]
 }
-
 </script>
 
 <style></style>
