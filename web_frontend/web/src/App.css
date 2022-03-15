@@ -1,12 +1,9 @@
-body{
-    margin: 0;
-    background: #eee;
-    font-family: "Convergence", sans-serif;
-}
+
 
 :root{
     --table-green: #009879;
     --default-radius: 0,2rem;
+    --default-background: #eee
 }
 
 .vue-notification{
@@ -17,4 +14,10 @@ body{
  html,
 body {
 	height: 100%;
+}
+
+body{
+    margin: 0;
+    background: var(--default-background);
+    font-family: "Convergence", sans-serif;
 }
