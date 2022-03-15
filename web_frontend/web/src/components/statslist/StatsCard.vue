@@ -1,9 +1,12 @@
 <template>
 	<div class="stats-card" v-if="this.user !== undefined">
-		<h1 class="stats-card-title">{{ this.title }}</h1>
-		<info-list v-if="!this.loading" :items="this.data" />
-		<div v-else>
-			<spinner />
+		<div class="stats-card-top">
+			<span class="stats-card-title">{{ this.title }}</span>
+		</div>
+		<div class="card-content">
+			<info-list v-if="!this.loading" :items="this.data" />
+
+			<spinner v-else />
 		</div>
 	</div>
 </template>
