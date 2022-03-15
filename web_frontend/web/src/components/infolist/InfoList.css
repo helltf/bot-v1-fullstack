@@ -12,18 +12,25 @@
     border-radius: 4px;
     margin: 20px 40px;
     background-color: lightgray;
-    padding: 5px;
+
 }
 
 .stats-card-title{
-    text-align: center;
+    font-weight: bold;
+    font-size: 17pt;
 }
 
 .info-list{
     list-style-type: none;
+    padding: 0px;
 }
 
 .list-empty{
     font-weight: bold;
     color: crimson;
+}
+
+.stats-card-top{
+    padding: 5px;
+    border-bottom: 2px solid black;
 }
