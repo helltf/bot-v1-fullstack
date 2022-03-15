@@ -1,17 +1,14 @@
 <template>
-	<div v-if="this.loading" class="loading-container">
-		<spinner />
-	</div>
-	<div v-else>
+	<div class="stats-list">
 		<stats-card
 			:field="'user_info'"
 			:title="'User info'"
-			:newUser="this.userInput"
+			:user="this.userInput"
 		/>
 		<stats-card
 			:title="title"
 			:field="field"
-			:newUser="this.userInput"
+			:user="this.userInput"
 			v-for="[title, field] of this.statsFields"
 			:key="field"
 		/>
@@ -20,20 +17,18 @@
 
 <script>
 import StatsCard from '../statslist/StatsCard.vue'
-import Spinner from '../spinner/Spinner.vue'
 
 const statsFields = new Map([
 	['Recent Colors', 'color_history'],
 	['Cookie stats', 'cookie'],
 	['Rps games', 'rps'],
-	['Recieved timeouts', 'timeout'],
-	['Recieved bans', 'ban'],
+	['Received timeouts', 'timeout'],
+	['Received bans', 'ban'],
 ])
 
 export default {
 	name: 'StatsList',
 	components: {
-		Spinner,
 		StatsCard,
 	},
 	props: {
