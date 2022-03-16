@@ -7,6 +7,7 @@
     --default-font-color: rgb(214, 214, 214);
     --mid-dark:#383838;
     --light-gray: #5a5a5a;
+    --light-dark:rgb(70, 70, 70);
 }
 
 .vue-notification{
