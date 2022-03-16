@@ -17,7 +17,7 @@
 }
 
 .link{
-    color:rgb(163, 163, 163);
+    color:var(--font-dark);
     align-items: center;
     text-decoration: none;
     padding: 0.5rem 1rem;
