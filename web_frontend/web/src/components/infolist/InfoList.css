@@ -3,6 +3,7 @@
     padding: 0px;
     display: flex;
     justify-content: center;
+    
 }
 
 .list-empty{
@@ -19,7 +20,7 @@
 .list-content{
     padding: 0 5px 0 5px;
     margin: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 
@@ -33,6 +34,7 @@
 	width: 85%;
 	border: 3px solid var(--table-green);
 	border-radius: 3px;
+    margin-bottom: 10px;
 
 }
 .info-fieldset:hover{
