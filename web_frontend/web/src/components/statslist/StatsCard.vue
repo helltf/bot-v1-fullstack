@@ -1,5 +1,5 @@
 <template>
-	<div class="stats-card" v-if="this.user !== undefined">
+	<div :key="this.user" class="stats-card" v-if="this.user !== undefined">
 		<div class="stats-card-top">
 			<span class="stats-card-title">{{ this.title }}</span>
 		</div>
