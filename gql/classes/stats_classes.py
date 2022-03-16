@@ -24,10 +24,14 @@ class Rps:
 
 
 class Timeout:
-    def __init__(self, raw):
-        self.amount = raw
+    def __init__(self, amount, first, last):
+        self.amount = amount
+        self.first_channel = first
+        self.last_channel = last
 
 
 class Ban:
-    def __init__(self, amount):
+    def __init__(self, amount, first, last):
         self.amount = amount
+        self.first_channel = first
+        self.last_channel = last
