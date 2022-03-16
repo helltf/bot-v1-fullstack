@@ -1,6 +1,8 @@
 .info-list{
     list-style-type: none;
     padding: 0px;
+    display: flex;
+    justify-content: center;
 }
 
 .list-empty{
@@ -17,19 +19,13 @@
 .list-content{
     padding: 0 5px 0 5px;
     margin: 2px;
+    margin-bottom: 20px;
 }
 
-
-.info-name{
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.info-name::after{
-    content: ": ";
-}
 
 .info-value{
-    color: green;
+    color: var(--default-font-color);
+    font-size: 15pt;
 }
+
 
