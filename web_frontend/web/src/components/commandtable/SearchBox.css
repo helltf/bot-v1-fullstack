@@ -1,6 +1,4 @@
 
-
-
 *::before,
 *::after{
     box-sizing: border-box;
@@ -12,6 +10,7 @@
     border-color: var(--table-green);
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--ligth-dark);
 }
 
 .search-input{
@@ -32,8 +31,14 @@
 .search-form{
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .search-legend{
     font-size: 15pt;
+}
+
+.input-username, .input-password{
+    border-radius: 10px;
 }

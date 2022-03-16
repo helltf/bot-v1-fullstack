@@ -44,12 +44,16 @@ RPS_TYPEDEF = """
 TIMEOUT_TYPEDEF = """
     type TimeoutStats{
         amount: Int!
+        last_channel: String
+        first_channel: String
     }
 """
 
 BAN_TYPEDEF = """
     type BanStats{
         amount: Int!
+        last_channel: String
+        first_channel: String
     }
 """
 

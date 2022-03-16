@@ -1,3 +1,5 @@
+from builtins import len
+
 from classes.stats_classes import ColorHistory, Rps, Cookie, Timeout, Ban
 from database.database import get_one, execute_query_all
 
@@ -26,10 +28,10 @@ def get_cookie_stats(name):
 
 
 def get_ban_stats(name):
-    amount = execute_query_all("SELECT COUNT(*) FROM BANNED_USER WHERE USERNAME = %s", [name])
-    return Ban(amount[0][0])
+    result = execute_query_all("SELECT * FROM BANNED_USER WHERE USERNAME = %s ORDER BY TIME ASC", [name])
+    return Ban(len(result), result[0][1], result[len(result) - 1][1])
 
 
 def get_timeout_stats(name):
-    amount = execute_query_all("SELECT COUNT(*) FROM TIMEOUT_USER WHERE USERNAME = %s", [name])
-    return Timeout(amount[0][0])
+    result = execute_query_all("SELECT * FROM TIMEOUT_USER WHERE USERNAME = %s ORDER BY TIME ASC", [name])
+    return Timeout(len(result), result[0][1], result[len(result) - 1][1])

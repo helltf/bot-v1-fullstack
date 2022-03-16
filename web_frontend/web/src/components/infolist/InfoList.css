@@ -1,0 +1,47 @@
+.info-list{
+    list-style-type: none;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.list-empty{
+    font-weight: bold;
+    color: crimson;
+}
+
+.list-empty-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.list-content{
+    padding: 0 5px 0 5px;
+    margin: 2px;
+    margin-bottom: 10px;
+}
+
+
+.info-value{
+    color: var(--default-font-color);
+    font-size: 15pt;
+}
+
+
+.info-fieldset{
+	width: 85%;
+	border: 3px solid var(--table-green);
+	border-radius: 3px;
+    margin-bottom: 10px;
+
+}
+.info-fieldset:hover{
+	background: var(--light-dark);
+	transition: background 0.2s ease-in-out 0s;
+}
+
+.info-legend{
+	color: var(--font-dark);
+}
