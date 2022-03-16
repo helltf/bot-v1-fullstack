@@ -6,8 +6,8 @@ const availableFields = {
 	color_history: `last_change, history, register_time`,
 	rps: `draw, win, lose`,
 	cookie: `amount, average, resets`,
-	ban: `amount`,
-	timeout: `amount`,
+	ban: `amount, first_channel, last_channel`,
+	timeout: `amount, first_channel, last_channel`,
 }
 
 const getUserQueryParam = (user) => {
