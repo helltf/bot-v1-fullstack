@@ -5,9 +5,9 @@
 			class="color-display"
 			@click="copyValue(color)"
 		>
-			
+			<span class="color-tooltip">{{ color }}</span>
 		</div>
-		<span class="color-info">{{ color }}</span>
+		
 	</div>
 </template>
 
