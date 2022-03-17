@@ -1,5 +1,7 @@
 import { gql } from 'graphql-request'
 import { request } from './graphql-request'
+import {orderUserInfo} from '../order'
+import { Resource } from '../class/Resource'
 
 const availableFields = {
 	userFields: `id, username, color, permissions, register_time, display_name`,
@@ -44,7 +46,7 @@ const getStatsQuery = (user) => {
     `
 }
 
-const fetchUserInfo = (user) => {
+const fetchUserInfo = async (user) => {
 	const queryParams = getUserQueryParam(user)
 
 	const query = gql`
@@ -54,7 +56,12 @@ const fetchUserInfo = (user) => {
             }
         }
     `
-	return request(process.env.VUE_APP_GQL_URL, query)
+    let {data, success, error} = await request(process.env.VUE_APP_GQL_URL, query)
+
+    if(success){
+        return Resource.ok(orderUserInfo(data))
+    }
+	return Resource.error(error)
 }
 
 const fetchStatsField = (user, field) => {
