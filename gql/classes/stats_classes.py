@@ -12,7 +12,9 @@ class ColorHistory:
 
 
 class Cookie:
-    def __init__(self, amount, resets, average):
+    def __init__(self, amount, resets, average, last_claim, last_reset):
+        self.last_claim = parse_unix_date(last_claim)
+        self.last_reset = parse_unix_date(last_reset)
         self.amount = amount
         self.resets = resets
         self.average = average

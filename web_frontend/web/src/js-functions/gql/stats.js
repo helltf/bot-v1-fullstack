@@ -1,11 +1,13 @@
 import { gql } from 'graphql-request'
 import { request } from './graphql-request'
+import {orderUserInfo} from '../order'
+import { Resource } from '../class/Resource'
 
 const availableFields = {
 	userFields: `id, username, color, permissions, register_time, display_name`,
 	color_history: `last_change, history, register_time`,
 	rps: `draw, win, lose`,
-	cookie: `amount, average, resets`,
+	cookie: `amount, average, resets, last_reset, last_claim`,
 	ban: `amount, first_channel, last_channel`,
 	timeout: `amount, first_channel, last_channel`,
 }
@@ -44,7 +46,7 @@ const getStatsQuery = (user) => {
     `
 }
 
-const fetchUserInfo = (user) => {
+const fetchUserInfo = async (user) => {
 	const queryParams = getUserQueryParam(user)
 
 	const query = gql`
@@ -54,7 +56,12 @@ const fetchUserInfo = (user) => {
             }
         }
     `
-	return request(process.env.VUE_APP_GQL_URL, query)
+    let {data, success, error} = await request(process.env.VUE_APP_GQL_URL, query)
+
+    if(success){
+        return Resource.ok(orderUserInfo(data))
+    }
+	return Resource.error(error)
 }
 
 const fetchStatsField = (user, field) => {

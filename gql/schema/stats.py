@@ -29,6 +29,8 @@ COOKIE_TYPEDEF = """
         amount: Int
         resets: Int
         average: Float
+        last_reset: String
+        last_claim: String
     }
 """
 

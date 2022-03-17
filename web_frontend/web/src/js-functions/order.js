@@ -10,21 +10,36 @@ const orderFunctions = {
 	},
 }
 
-const orderBy = (coloumn,  {values, orderedBy:{orderAsc}}) => {
+const orderBy = (coloumn, { values, orderedBy: { orderAsc } }) => {
 	let ordered_list = orderFunctions[coloumn](values)
 	orderAsc = !orderAsc
 
-	if(!orderAsc){
+	if (!orderAsc) {
 		ordered_list.reverse()
 	}
 
 	return {
-		orderedBy:{
+		orderedBy: {
 			coloumn,
-			orderAsc
+			orderAsc,
 		},
-		values: ordered_list
+		values: ordered_list,
 	}
 }
 
-export { orderBy }
+const orderUserInfo = ({
+	user: { username, display_name, id, color, permissions, register_time },
+}) => {
+	return {
+		user: {
+			username,
+			display_name,
+			id,
+			color,
+			permissions,
+			register_time,
+		},
+	}
+}
+
+export { orderBy, orderUserInfo }

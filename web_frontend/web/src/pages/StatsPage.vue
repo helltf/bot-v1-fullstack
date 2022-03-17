@@ -3,6 +3,7 @@
 		v-model="searchValue"
 		:legendValue="'User'"
 		@keyup.enter="openStatsPage()"
+		:classValue="'stats-input'"
 	/>
 	<div v-if="this.setUser !== ''">
 		<stats-list :userInput="this.setUser" />
