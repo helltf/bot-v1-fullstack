@@ -7,7 +7,7 @@ const availableFields = {
 	userFields: `id, username, color, permissions, register_time, display_name`,
 	color_history: `last_change, history, register_time`,
 	rps: `draw, win, lose`,
-	cookie: `amount, average, resets`,
+	cookie: `amount, average, resets, last_reset, last_claim`,
 	ban: `amount, first_channel, last_channel`,
 	timeout: `amount, first_channel, last_channel`,
 }
