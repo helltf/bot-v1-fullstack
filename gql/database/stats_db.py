@@ -16,15 +16,15 @@ def get_rps_stats(id):
 
 def get_cookie_stats(name):
     amount = 0
-    raw_cookies = execute_query_all("SELECT * FROM COOKIES WHERE USERNAME = %s", [name])
+    raw_cookies = execute_query_all("SELECT * FROM COOKIES WHERE USERNAME = %s ORDER BY TIME ASC", [name])
     for entry in raw_cookies:
         amount += entry[1]
 
     average = round(amount / len(raw_cookies))
 
-    reset_count = execute_query_all("SELECT COUNT(*) FROM COOKIE_RESET WHERE USERNAME = %s", [name])
+    reset_count = execute_query_all("SELECT * FROM COOKIE_RESET WHERE USERNAME = %s ORDER BY TIME ASC", [name])
 
-    return Cookie(amount, reset_count[0][0], average)
+    return Cookie(amount, len(reset_count), average, raw_cookies[0][2], reset_count[0][1])
 
 
 def get_ban_stats(name):
