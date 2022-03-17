@@ -1,10 +1,14 @@
 <template>
-	<div
-		:key="color"
-		v-for="color of getColors"
-		:style="this.colorStyle(color)"
-		class="color-display"
-	></div>
+	<div :key="color" v-for="color of getColors">
+		<div
+			:style="this.colorStyle(color)"
+			class="color-display"
+			@click="copyValue(color)"
+		>
+			
+		</div>
+		<span class="color-info">{{ color }}</span>
+	</div>
 </template>
 
 <script>
@@ -25,6 +29,9 @@ export default {
 			return {
 				'background-color': color,
 			}
+		},
+		copyValue(color) {
+			navigator.clipboard.writeText(color)
 		},
 	},
 }
