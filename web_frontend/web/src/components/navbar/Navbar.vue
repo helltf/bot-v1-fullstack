@@ -1,30 +1,34 @@
 <template>
-	<div id="nav">
-		<div class="nav-wrapper">
-			<div class="nav-begin nav-list">
-				<router-link class="link" to="/">Home</router-link>
-				<router-link class="link" to="/commands">Commands</router-link>
-				<router-link class="link" to="/stats">Stats</router-link>
-			</div>
+	<ul id="nav" class="nav-list">
+		<li class="link link-left">
+			<router-link class="link-item" to="/">Home</router-link>
+		</li>
+		<li class="link link-left">
+			<router-link class="link-item" to="/commands">Commands</router-link>
+		</li>
+		<li class="link link-left">
+			<router-link class="link-item" to="/stats">Stats</router-link>
+		</li>
+		<li class="link link-right" v-if="userDefined">
+			<router-link class="link-item" to="/logout">Logout</router-link>
+		</li>
+		<li class="image-link" v-if="userDefined">
+			<a :href="`https://twitch.tv/${this.current_user}`">
+				<img class="img-pfp" :src="getImageSrc" alt="" />
+			</a>
+		</li>
+		<li class="link link-right" v-if="userDefined">
+			<router-link class="link-item" to="/user-info">{{
+				this.current_user
+			}}</router-link>
+		</li>
 
-			<div class="nav-end nav-list">
-				<router-link class="link" id="link-about" to="/about"
-					>About</router-link
-				>
-				<router-link
-					class="link"
-					to="/user-info"
-					v-if="this.current_user !== undefined"
-					>{{ this.current_user }}</router-link
-				>
-				<router-link class="link" to="/logout" v-if="this.current_user"
-					>Logout</router-link
-				>
-
-				<router-link v-else class="link" to="/login">Login</router-link>
-			</div>
-		</div>
-	</div>
+		<li class="link link-right">
+			<router-link v-if="!userDefined" class="link-item" to="/login"
+				>Login</router-link
+			>
+		</li>
+	</ul>
 </template>
 
 <script>
@@ -44,6 +48,11 @@ export default {
 			setUser: inject('setUser'),
 		}
 	},
+	data() {
+		return {
+			image_source: undefined,
+		}
+	},
 	async mounted() {
 		this.access_token.token = getUserAccessToken(document.location.hash)
 
@@ -55,6 +64,14 @@ export default {
 	methods: {
 		async logout() {
 			router.push('/logout')
+		},
+	},
+	computed: {
+		getImageSrc() {
+			return 'https://static-cdn.jtvnw.net/jtv_user_pictures/7ebab2a7-235f-48b3-9b78-a23c24f3d426-profile_image-300x300.png'
+		},
+		userDefined() {
+			return this.current_user
 		},
 	},
 }

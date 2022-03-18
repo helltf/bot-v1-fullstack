@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request'
 import { request } from './graphql-request'
-import {orderUserInfo} from '../order'
+import { orderUserInfo } from '../order'
 import { Resource } from '../class/Resource'
 
 const availableFields = {
@@ -56,11 +56,14 @@ const fetchUserInfo = async (user) => {
             }
         }
     `
-    let {data, success, error} = await request(process.env.VUE_APP_GQL_URL, query)
+	let { data, success, error } = await request(
+		process.env.VUE_APP_GQL_URL,
+		query
+	)
 
-    if(success){
-        return Resource.ok(orderUserInfo(data))
-    }
+	if (success) {
+		return Resource.ok(orderUserInfo(data))
+	}
 	return Resource.error(error)
 }
 
@@ -78,6 +81,7 @@ const fetchStatsField = (user, field) => {
             }
         }
     `
+
 	return request(process.env.VUE_APP_GQL_URL, query)
 }
 

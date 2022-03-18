@@ -46,4 +46,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.stats-input{
+	width: 70%;
+	margin: auto;
+	margin-top: 10px;
+}
+</style>
