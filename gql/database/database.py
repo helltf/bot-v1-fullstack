@@ -3,7 +3,6 @@ from typing import Dict, Any
 from mysql import connector as db
 import os
 from dotenv import load_dotenv
-from mysql.connector import CMySQLConnection
 from mysql.connector.cursor_cext import CMySQLCursor
 
 load_dotenv()
@@ -46,7 +45,7 @@ def get_cursor(query: str, values=None):
     return cursor, connection
 
 
-def close_cursor_and_conn(cursor: CMySQLCursor, connection: CMySQLConnection):
+def close_cursor_and_conn(cursor: CMySQLCursor, connection):
     cursor.close()
     connection.close()
 
