@@ -15,6 +15,25 @@ const validateToken = async (token) => {
 	}
 }
 
+const getTwitchUserInfo = async(token) => {
+	try {
+		return Resource.ok(await (
+			await fetch(`https://api.twitch.tv/helix/users`, {
+				headers: {
+					'content-type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+					'Client-id': process.env.VUE_APP_CLIENT_ID
+				}
+			})
+		).json())
+	} catch {
+		return Resource.error('could fetch user data')
+	}
+}
+
+
+
 export {
-    validateToken
+    validateToken,
+	getTwitchUserInfo
 }

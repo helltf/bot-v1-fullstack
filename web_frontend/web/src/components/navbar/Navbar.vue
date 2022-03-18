@@ -1,30 +1,34 @@
 <template>
-	<div id="nav">
-		<div class="nav-wrapper">
-			<div class="nav-begin nav-list">
-				<router-link class="link" to="/">Home</router-link>
-				<router-link class="link" to="/commands">Commands</router-link>
-				<router-link class="link" to="/stats">Stats</router-link>
-			</div>
+	<ul id="nav" class="nav-list">
+		<li class="link link-left">
+			<router-link class="link-item" to="/">Home</router-link>
+		</li>
+		<li class="link link-left">
+			<router-link class="link-item" to="/commands">Commands</router-link>
+		</li>
+		<li class="link link-left">
+			<router-link class="link-item" to="/stats">Stats</router-link>
+		</li>
+		<li class="link link-right" v-if="userDefined">
+			<router-link class="link-item" to="/logout">Logout</router-link>
+		</li>
+		<li class="image-link" v-if="userDefined">
+			<a :href="`https://twitch.tv/${this.current_user}`">
+				<img class="img-pfp" :src="getImageSrc" alt="" />
+			</a>
+		</li>
+		<li class="link link-right" v-if="userDefined">
+			<router-link class="link-item" to="/user-info">{{
+				this.current_user
+			}}</router-link>
+		</li>
 
-			<div class="nav-end nav-list">
-				<router-link class="link" id="link-about" to="/about"
-					>About</router-link
-				>
-				<router-link
-					class="link"
-					to="/user-info"
-					v-if="this.current_user !== undefined"
-					>{{ this.current_user }}</router-link
-				>
-				<router-link class="link" to="/logout" v-if="this.current_user"
-					>Logout</router-link
-				>
-
-				<router-link v-else class="link" to="/login">Login</router-link>
-			</div>
-		</div>
-	</div>
+		<li class="link link-right">
+			<router-link v-if="!userDefined" class="link-item" to="/login"
+				>Login</router-link
+			>
+		</li>
+	</ul>
 </template>
 
 <script>
@@ -33,6 +37,7 @@ import router from '../../router'
 import {
 	getUserAccessToken,
 	getUsername,
+	getProfiPictureUrl
 } from '../../js-functions/request/twitch-login'
 
 export default {
@@ -44,17 +49,32 @@ export default {
 			setUser: inject('setUser'),
 		}
 	},
+	data() {
+		return {
+			image_source: undefined,
+		}
+	},
 	async mounted() {
-		this.access_token.token = getUserAccessToken(document.location.hash)
+		const token = getUserAccessToken(document.location.hash)
+		this.access_token = token
 
-		if (this.access_token.token) {
-			const current_user = await getUsername(this.access_token.token)
+		if (token) {
+			const current_user = await getUsername(token)
+			this.image_source = await getProfiPictureUrl(token)
 			this.setUser(current_user)
 		}
 	},
 	methods: {
 		async logout() {
 			router.push('/logout')
+		},
+	},
+	computed: {
+		getImageSrc() {
+			return this.image_source
+		},
+		userDefined() {
+			return this.current_user
 		},
 	},
 }
