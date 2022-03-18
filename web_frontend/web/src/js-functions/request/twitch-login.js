@@ -1,4 +1,4 @@
-import { validateToken } from './twitch-request'
+import { validateToken, getTwitchUserInfo } from './twitch-request'
 import { errorNotification } from '../notification'
 
 const checkAccessToken = async (access_token) => {
@@ -23,6 +23,7 @@ async function getUsername(access_token) {
 	if (!access_token) return undefined
 	
 	const { data, success, error } = await validateToken(access_token)
+
 	if (success) {
 		return data.login
 	} else {
@@ -30,4 +31,9 @@ async function getUsername(access_token) {
 	}
 }
 
-export { checkAccessToken, getUserAccessToken, getUsername }
+const getProfiPictureUrl = async (token) => {
+	let {data:{data}} = await getTwitchUserInfo(token)
+	return data[0]?.profile_image_url
+}
+
+export { checkAccessToken, getUserAccessToken, getUsername, getProfiPictureUrl}

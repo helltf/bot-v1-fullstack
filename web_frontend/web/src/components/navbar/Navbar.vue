@@ -37,6 +37,7 @@ import router from '../../router'
 import {
 	getUserAccessToken,
 	getUsername,
+	getProfiPictureUrl
 } from '../../js-functions/request/twitch-login'
 
 export default {
@@ -54,10 +55,12 @@ export default {
 		}
 	},
 	async mounted() {
-		this.access_token.token = getUserAccessToken(document.location.hash)
+		const token = getUserAccessToken(document.location.hash)
+		this.access_token = token
 
-		if (this.access_token.token) {
-			const current_user = await getUsername(this.access_token.token)
+		if (token) {
+			const current_user = await getUsername(token)
+			this.image_source = await getProfiPictureUrl(token)
 			this.setUser(current_user)
 		}
 	},
@@ -68,7 +71,7 @@ export default {
 	},
 	computed: {
 		getImageSrc() {
-			return 'https://static-cdn.jtvnw.net/jtv_user_pictures/7ebab2a7-235f-48b3-9b78-a23c24f3d426-profile_image-300x300.png'
+			return this.image_source
 		},
 		userDefined() {
 			return this.current_user
