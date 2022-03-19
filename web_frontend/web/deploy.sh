@@ -6,10 +6,10 @@ npm run build
 
 
 cd ~/Desktop/deploy_vue_app/bot 
-rm -rf !(".git")
+#rm -rf !(".git")
 
 cd /var/www/inst_mono/web_frontend/web
-#cp -R dist/* /home/pi/Desktop/deploy_vue_app/
+cp -R dist/* /home/pi/Desktop/deploy_vue_app/
 
 cd ~/Desktop/deploy_vue_app/bot 
 
