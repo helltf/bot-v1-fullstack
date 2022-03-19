@@ -10,6 +10,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:helltf/inst_mono.git main:gh-pages
+git push -f git@github.com:helltf/helltf.github.io.git main
 
 cd -
