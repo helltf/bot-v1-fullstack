@@ -7,7 +7,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-
+applikation = app
 
 @app.route('/gql', methods=["GET"])
 def send_error():
@@ -29,4 +29,4 @@ def graphql_server():
 
 
 if __name__ == "__main__":
-    app.run(debug=os.getenv("DEBUG") == "True", port=int(os.getenv("PORT")))
+   app.run(debug=os.getenv("DEBUG") == "True", port=int(os.getenv("PORT")))

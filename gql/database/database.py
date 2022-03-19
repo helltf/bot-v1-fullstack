@@ -9,10 +9,14 @@ load_dotenv()
 
 def connect_db():
     return db.connect(
-        host=os.getenv('HOST'),
-        user=os.getenv('USER'),
-        password=os.getenv('PASSWORD'),
-        database=os.getenv('DATABASE')
+	host='localhost',
+	user='wpuser',
+	password='1234',
+	database='wpdb'
+   #     host=os.getenv('HOST'),
+  #      user=os.getenv('USER'),
+ #       password=os.getenv('PASSWORD'),
+#        database=os.getenv('DATABASE')
     )
 
 
