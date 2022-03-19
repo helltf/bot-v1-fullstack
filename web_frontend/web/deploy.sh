@@ -6,6 +6,7 @@ npm run build
 
 
 cd ~/Desktop/deploy_vue_app/bot 
+echo $PWD
 #rm -rf !(".git")
 
 cd /var/www/inst_mono/web_frontend/web
@@ -13,7 +14,7 @@ cd /var/www/inst_mono/web_frontend/web
 cp -R dist/* /home/pi/Desktop/deploy_vue_app/bot
 
 cd ~/Desktop/deploy_vue_app/bot 
-echo $PWD
+
 
 git add -A
 git commit -m 'deploy'
