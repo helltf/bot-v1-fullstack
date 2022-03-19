@@ -1,5 +1,4 @@
-import os
-
+from decouple import config
 from ariadne import gql, load_schema_from_path, graphql_sync
 from flask import Flask, jsonify, request
 from schema.create import create_schema
@@ -29,4 +28,4 @@ def graphql_server():
 
 
 if __name__ == "__main__":
-   app.run(debug=os.getenv("DEBUG") == "True", port=int(os.getenv("PORT")))
+   app.run(debug=config("DEBUG") == "True", port=int(config("PORT")))
