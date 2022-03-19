@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+shopt -s extglob
 set -e
 
 npm run build
@@ -7,7 +7,7 @@ npm run build
 
 cd ~/Desktop/deploy_vue_app/bot 
 echo $PWD
-#rm -rf !(".git")
+rm -rf !(".git")
 
 cd /var/www/inst_mono/web_frontend/web
 
