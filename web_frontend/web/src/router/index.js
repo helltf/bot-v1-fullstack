@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import LoginPage from '../pages/LoginPage.vue'
 import HomePage from '../pages/HomePage.vue'
 import LogoutPage from '../pages/LogoutPage.vue'
@@ -60,8 +60,13 @@ const routes = [
 ]
 
 const router = createRouter({
-	history: createWebHashHistory(),
+	history: process.env.NODE_ENV === 'production' ? createWebHistory():createWebHashHistory(),
 	routes,
+})
+
+router.afterEach((to) => {
+	console.log(to)
+	document.title = to.meta.title
 })
 
 export default router
