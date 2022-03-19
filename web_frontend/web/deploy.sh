@@ -13,7 +13,7 @@ cp -R dist/* /home/pi/Desktop/deploy_vue_app/
 
 cd ~/Desktop/deploy_vue_app/bot 
 
-git add .
+git add -A
 git commit -m 'deploy'
 
 git push -f git@github.com:helltf/bot.git main:gh-pages
