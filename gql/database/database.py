@@ -1,22 +1,14 @@
 from typing import Dict, Any
 
 from mysql import connector as db
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
+from decouple import config
 
 def connect_db():
     return db.connect(
-	host='localhost',
-	user='wpuser',
-	password='1234',
-	database='wpdb'
-   #     host=os.getenv('HOST'),
-  #      user=os.getenv('USER'),
- #       password=os.getenv('PASSWORD'),
-#        database=os.getenv('DATABASE')
+        host=config('HOST'),
+        user=config('USER'),
+        password=config('PASSWORD'),
+        database=config('DATABASE')
     )
 
 
