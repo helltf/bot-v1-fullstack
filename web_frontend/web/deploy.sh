@@ -1,5 +1,5 @@
 #!/bin/bash
-shopt -s extglob
+
 set -e
 
 npm run build
@@ -14,7 +14,6 @@ cd /var/www/inst_mono/web_frontend/web
 cp -R dist/* /home/pi/Desktop/deploy_vue_app/bot
 
 cd ~/Desktop/deploy_vue_app/bot 
-
 
 git add -A
 git commit -m 'deploy'
