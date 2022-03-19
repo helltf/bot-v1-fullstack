@@ -5,9 +5,9 @@ set -e
 npm run build
 
 
-cd ~/Desktop/deploy_vue_app/bot 
-echo $PWD
-rm -rf !(".git")
+cd ~/Desktop/deploy_vue_app/
+
+find ./bot -mindepth 1 -name .git -prune -o -exec rm -rf {} +
 
 cd /var/www/inst_mono/web_frontend/web
 
