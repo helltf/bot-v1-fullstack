@@ -1,4 +1,5 @@
+#!/usr/bin/python
 import sys
-sys.path.insert(0,"/var/www/inst_mono/gql")
+sys.path.insert(0,"/var/www/inst_mono/gql/")
 
-from main import app as applikation
+from main import app as application
