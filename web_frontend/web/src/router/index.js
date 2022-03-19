@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginPage from '../pages/LoginPage.vue'
 import HomePage from '../pages/HomePage.vue'
 import LogoutPage from '../pages/LogoutPage.vue'
@@ -60,7 +60,7 @@ const routes = [
 ]
 
 const router = createRouter({
-	history: process.env.NODE_ENV === 'production' ? createWebHistory():createWebHashHistory(),
+	history: createWebHashHistory(),
 	routes,
 })
 
