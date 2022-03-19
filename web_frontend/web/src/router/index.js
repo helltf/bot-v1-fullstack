@@ -65,8 +65,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-	console.log(to)
-	document.title = to.meta.title
+	document.title = 'helltf' + to.path
 })
 
 export default router
