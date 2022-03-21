@@ -32,7 +32,7 @@
 			<a v-if="userDefined" :href="`https://twitch.tv/${this.current_user}`">
 				<img class="img-pfp" :src="getImageSrc" alt="" />
 			</a>
-			<button class="activate-mobile" v-if="showButton">
+			<button class="activate-mobile " v-if="showButton">
 				III
 			</button>
 		</div>
@@ -60,7 +60,7 @@ export default {
 	data() {
 		return {
 			image_source: undefined,
-			width: undefined
+			width: window.innerWidth
 		}
 	},
 	async mounted() {
