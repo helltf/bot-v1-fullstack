@@ -22,7 +22,7 @@
 	position: sticky;
 	align-items: center;
 	background-color: #383838;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	height: 80px;
 	justify-content: center;
 }
@@ -55,7 +55,7 @@
 
 .link-item {
 	display: flex;
-	color: var(--font-dark);
+	color: white;
 	align-items: center;
 	text-decoration: none;
 	padding: 0.5rem 1rem;
