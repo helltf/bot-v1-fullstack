@@ -1,42 +1,38 @@
 <template>
 	<nav id="nav">
-		<ul class="nav-list nav-left ">
-			<li class="link">
-				<router-link class="link-item" to="/">Home</router-link>
-			</li>
-			<li class="link">
-				<router-link class="link-item" to="/commands">Commands</router-link>
-			</li>
-			<li class="link">
-				<router-link class="link-item" to="/stats">Stats</router-link>
-			</li>
-		</ul>
-		<ul class="nav-list nav-right ">
-			<li class="link" v-if="userDefined">
-				<router-link class="link-item" to="/logout">Logout</router-link>
-			</li>
-			<li class="image-link" v-if="userDefined">
-				<a :href="`https://twitch.tv/${this.current_user}`">
-					<img class="img-pfp" :src="getImageSrc" alt="" />
-				</a>
-			</li>
-			<li class="link" v-if="userDefined">
-				<router-link class="link-item" to="/user-info">{{
-					this.current_user
-				}}</router-link>
-			</li>
+		<div class="nav-container">
+			<ul class="nav-list nav-left">
+				<li class="link">
+					<router-link class="link-item" to="/">Home</router-link>
+				</li>
+				<li class="link">
+					<router-link class="link-item" to="/commands">Commands</router-link>
+				</li>
+				<li class="link">
+					<router-link class="link-item" to="/stats">Stats</router-link>
+				</li>
+			</ul>
+			<ul class="nav-list nav-right">
+				<li class="link" v-if="userDefined">
+					<router-link class="link-item" to="/logout">Logout</router-link>
+				</li>
+				<li class="link" v-if="userDefined">
+					<router-link class="link-item" to="/user-info">{{
+						this.current_user
+					}}</router-link>
+				</li>
 
-			<li class="link">
-				<router-link v-if="!userDefined" class="link-item" to="/login"
-					>Login</router-link
-				>
-			</li>
-			<li class="link">
-				<router-link v-if="!userDefined" class="link-item" to="/login"
-					>Login</router-link
-				>
-			</li>
-		</ul>
+				<li class="link">
+					<router-link v-if="!userDefined" class="link-item" to="/login"
+						>Login</router-link
+					>
+				</li>
+			</ul>
+
+			<a v-if="userDefined" :href="`https://twitch.tv/${this.current_user}`">
+				<img class="img-pfp" :src="getImageSrc" alt="" />
+			</a>
+		</div>
 	</nav>
 </template>
 
