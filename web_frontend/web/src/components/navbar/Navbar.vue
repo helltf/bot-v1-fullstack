@@ -32,6 +32,9 @@
 			<a v-if="userDefined" :href="`https://twitch.tv/${this.current_user}`">
 				<img class="img-pfp" :src="getImageSrc" alt="" />
 			</a>
+			<button class="activate-mobile" v-if="showButton">
+				III
+			</button>
 		</div>
 	</nav>
 </template>
@@ -57,9 +60,11 @@ export default {
 	data() {
 		return {
 			image_source: undefined,
+			width: undefined
 		}
 	},
 	async mounted() {
+		
 		const token = getUserAccessToken(document.location.hash)
 		this.access_token = token
 
@@ -81,7 +86,13 @@ export default {
 		userDefined() {
 			return this.current_user
 		},
+		showButton(){
+			return this.width <= 920
+		}
 	},
+	beforeMount(){
+		window.addEventListener('resize', () => {this.width = window.innerWidth})
+	}
 }
 </script>
 
