@@ -1,7 +1,7 @@
 .link:hover a {
 	color: red;
-	border-bottom: 1px solid red;
-	transition: all 0.4s ease-out;
+	border-bottom: 3px solid red;
+	transition: all 0.2s ease-out;
 }
 
 .img-pfp {
@@ -9,6 +9,7 @@
 	height: 46px !important;
 	border-radius: 9999px;
 	justify-self: end;
+	margin-right: .5rem;
 }
 
 
@@ -62,11 +63,6 @@
 }
 
 
-* {
-	box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 .nav-container{
 	max-width: 1500px;
