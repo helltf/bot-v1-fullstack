@@ -1,7 +1,7 @@
 <template>
 	<nav id="nav">
 		<div class="nav-container">
-			<ul class="nav-list nav-left">
+			<ul :class="this.click ? 'nav-list active' : 'nav-list nav-left'">
 				<li class="link">
 					<router-link class="link-item" to="/">Home</router-link>
 				</li>
@@ -12,7 +12,7 @@
 					<router-link class="link-item" to="/stats">Stats</router-link>
 				</li>
 			</ul>
-			<ul class="nav-list nav-right">
+			<ul :class="this.click ? 'nav-list active' : 'nav-list nav-right'">
 				<li class="link" v-if="userDefined">
 					<router-link class="link-item" to="/logout">Logout</router-link>
 				</li>
@@ -32,7 +32,7 @@
 			<a v-if="userDefined" :href="`https://twitch.tv/${this.current_user}`">
 				<img class="img-pfp" :src="getImageSrc" alt="" />
 			</a>
-			<button class="activate-mobile " v-if="showButton">
+			<button style="z-index: 999;" class="activate-mobile" v-if="showButton" @click="handleClick()">
 				III
 			</button>
 		</div>
@@ -60,11 +60,12 @@ export default {
 	data() {
 		return {
 			image_source: undefined,
-			width: window.innerWidth
+			width: window.innerWidth,
+			click: false,
 		}
 	},
 	async mounted() {
-		
+		console.log(this.click)
 		const token = getUserAccessToken(document.location.hash)
 		this.access_token = token
 
@@ -78,6 +79,9 @@ export default {
 		async logout() {
 			router.push('/logout')
 		},
+		handleClick() {
+			this.click = !this.click
+		},
 	},
 	computed: {
 		getImageSrc() {
@@ -86,13 +90,15 @@ export default {
 		userDefined() {
 			return this.current_user
 		},
-		showButton(){
+		showButton() {
 			return this.width <= 920
-		}
+		},
 	},
-	beforeMount(){
-		window.addEventListener('resize', () => {this.width = window.innerWidth})
-	}
+	beforeMount() {
+		window.addEventListener('resize', () => {
+			this.width = window.innerWidth
+		})
+	},
 }
 </script>
 
