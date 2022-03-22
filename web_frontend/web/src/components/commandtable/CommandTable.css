@@ -5,7 +5,7 @@
 .command-table{
     margin: 25px 20px;
     border-collapse: collapse;
-    font-size: 15pt;
+    font-size: 11pt;
     min-width: 400px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
@@ -30,6 +30,8 @@
 .command-table tr td:nth-of-type(even){
     background-color: var(--mid-dark);
 }
+
+
 
 
 .command-table tr td:nth-last-of-type{
