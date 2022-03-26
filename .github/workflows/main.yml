@@ -29,4 +29,5 @@ jobs:
       - name: Run build script
         run: |
           cd web_frontend/web
+          npm i
           npm run build
