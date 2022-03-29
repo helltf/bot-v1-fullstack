@@ -33,7 +33,7 @@ import { getCommands } from '../../js-functions/gql/commands'
 import { orderBy } from '../../js-functions/order'
 import { filter } from '../../js-functions/filter'
 import SearchBox from '../commandtable/SearchBox.vue'
-import {errorNotification} from '../../js-functions/notification'
+import { errorNotification } from '../../js-functions/notification'
 
 export default {
 	name: 'CommandTable',
@@ -45,23 +45,21 @@ export default {
 			search_value: '',
 			commands: {
 				orderedBy: {
-					coloumn: undefined,
-					orderAsc: undefined,
+					coloumn: 'name',
+					orderedAsc: false,
 				},
 				values: [],
 			},
 		}
 	},
 	async mounted() {
-		let name = 'name'
 		const { data, error, success } = await getCommands()
+
 		if (success) {
 			this.commands.values = data.commands
-			this.commands.orderedBy.orderAsc = true
-			this.commands.orderedBy.coloumn = name
-			orderBy(name, this.commands)
-		}else{
-			errorNotification({title:"Commands", text: error})
+			this.commands = orderBy('name', this.commands)
+		} else {
+			errorNotification({ title: 'Commands', text: error })
 		}
 	},
 	methods: {
