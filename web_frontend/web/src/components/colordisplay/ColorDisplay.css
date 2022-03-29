@@ -1,5 +1,4 @@
 .color-display {
-	margin: 5px;
 	height: 20px;
 	width: 20px;
 	border: 1px solid black;
@@ -48,3 +47,8 @@
     border-color: var(--light-gray) transparent transparent transparent;
   }
 
+.color-container{
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+}

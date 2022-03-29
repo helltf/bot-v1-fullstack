@@ -1,4 +1,5 @@
 <template>
+<div class="color-container">
 	<div :key="color" v-for="color of getColors">
 		<div
 			:style="this.colorStyle(color)"
@@ -9,6 +10,8 @@
 		</div>
 		
 	</div>
+</div>
+
 </template>
 
 <script>
