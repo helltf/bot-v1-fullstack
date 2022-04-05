@@ -19,10 +19,10 @@
  html,
 body {
     color: var(--default-font-color);
+    height: 100%;
 }
 
 body{
-    height: 100%;
     margin: 0;
     background: var(--default-background);
     font-family: 'PT Sans', sans-serif;
