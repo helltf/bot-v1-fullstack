@@ -1,36 +1,19 @@
 <template>
-  <div class = "home">
-    <div class="home-content">
-    <h1>Welcome to my webpage</h1>
-    <h1>About myself</h1>
-    <h1>My Projects</h1>
-    <h1>My Social Media</h1>
-    </div>
-  </div>
+  <home-container/>
 </template>
 
 <script>
+import HomeContainer from '../components/homecontainer/HomeContainer.vue'
+
 export default {
   name: 'HomePage',
   components: {
-    
+    HomeContainer
   }
 }
 </script>
 <style>
-  .home-content{
-    background: var(--default-background);
-    height: 100%;
-    width: 70%;
-  }
-  .home{
-    display: flex;
-    justify-content: center;
-    height: 100%;
-  }
-  #app{
-    height: 100%;
-  }
+
 </style>
 
 
